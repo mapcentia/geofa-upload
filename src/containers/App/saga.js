@@ -5,9 +5,9 @@ import {
     signInSuccess, signInFailure,
     getDatabasesSuccess, getDatabasesFailure,
     updateUserSuccess, updateUserFailure, updateUserPasswordSuccess,
-    getSubusersRequest, getSubusersSuccess, getSubusersFailure,
-    getSchemasRequest, getSchemasSuccess, getSchemasFailure,
-    getGC2ConfigurationSuccess, checkAuthorizationRequest
+    getSubusersSuccess, getSubusersFailure,
+    getSchemasSuccess, getSchemasFailure,
+    getGC2ConfigurationSuccess, checkAuthorizationRequest, processSuccess, processFailure
 } from './actions';
 
 import {changeLocale} from '../LanguageProvider/actions';
@@ -21,13 +21,13 @@ import {
     UPDATE_USER_REQUEST,
     GET_SUBUSERS_REQUEST,
     GET_SCHEMAS_REQUEST,
-    GET_GC2_CONFIGURATION_REQUEST
+    GET_GC2_CONFIGURATION_REQUEST, PROCESS_REQUEST
 } from './constants';
 
 import {
-    checkAuthorizationCall, signInCall, createUserCall, updateUserCall, getDatabasesCall,
-    getSubusersCall, getSchemasCall, deleteUserCall, getConfigurationsCall,
-    createConfigurationCall, updateConfigurationCall, deleteConfigurationCall, getGC2ConfigurationCall
+    checkAuthorizationCall, signInCall, updateUserCall, getDatabasesCall,
+    getSubusersCall, getSchemasCall,
+    getGC2ConfigurationCall, processCall
 } from '../../api';
 
 const appBaseURL = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
@@ -67,7 +67,6 @@ export function* getDatabasesGenerator(data) {
         yield put(getDatabasesFailure());
     }
 }
-
 
 export function* signOutGenerator() {
     yield put(push(`${appBaseURL}sign-in`));
@@ -140,6 +139,16 @@ export function* getGC2ConfigurationGenerator() {
     }
 }
 
+export function* processGenerator(credentials) {
+    try {
+        const result = yield call(processCall, credentials);
+        yield put(processSuccess(result));
+
+    } catch (err) {
+        yield put(processFailure());
+    }
+}
+
 export default function* checkAuthorization() {
     yield takeLatest(CHECK_AUTHORIZATION_REQUEST, checkAuthorizationGenerator);
     yield takeLatest(SIGN_IN_REQUEST, signInGenerator);
@@ -150,4 +159,5 @@ export default function* checkAuthorization() {
     yield takeLatest(GET_SUBUSERS_REQUEST, getSubusersGenerator);
     yield takeLatest(GET_SCHEMAS_REQUEST, getSchemasGenerator);
     yield takeLatest(GET_GC2_CONFIGURATION_REQUEST, getGC2ConfigurationGenerator);
+    yield takeLatest(PROCESS_REQUEST, processGenerator);
 }

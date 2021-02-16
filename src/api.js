@@ -4,10 +4,9 @@
 
 import axios from 'axios';
 import config from './config';
-import Joi from 'joi-browser';
 
 const checkAuthorizationCall = () => {
-    return axios.get(`${config.apiUrl}session`, { withCredentials: true });
+    return axios.get(`${config.apiUrl}session`, {withCredentials: true});
 };
 
 const signInCall = (action) => {
@@ -22,28 +21,8 @@ const getGC2ConfigurationCall = () => {
     return axios.get(`${config.apiUrl.replace(`/api/v2/`, `/api/v1/`)}baselayerjs?format=json`, {withCredentials: true});
 };
 
-const createUserCall = (action) => {
-    const schema = Joi.object({
-        data: Joi.object().keys({
-            name: Joi.string().required(),
-            email: Joi.string().email().required(),
-            password: Joi.string().min(3).required(),
-            usergroup: Joi.string().allow(``).optional()
-        })
-    });
-
-    const {error} = Joi.validate(action.payload, schema);
-    if (error) {
-        console.error(error);
-        return Promise.reject(`Invalid data was provided`);
-    } else {
-        return axios.post(`${config.apiUrl}user`, action.payload.data, {
-            withCredentials: true,
-            validateStatus: (status) => {
-                return status >= 200 && status <= 400;
-            }
-        });
-    }
+const processCall = (action) => {
+    return axios.post(`${config.apiUrl}/test`, action.payload, {withCredentials: true});
 };
 
 const updateUserCall = (action) => {
@@ -76,35 +55,19 @@ const getConfigurationsCall = (action) => {
     return axios.get(`${config.apiUrl}configuration/${action.payload.userId}`, {withCredentials: true});
 }
 
-const deleteUserCall = (action) => {
-    return axios.delete(`${config.apiUrl}user/${action.payload.screenName}`, {withCredentials: true});
-}
-
-const createConfigurationCall = (action) => {
-    let submittedData = {
-        name: action.payload.data.name,
-        description: action.payload.data.description,
-        body: JSON.stringify(action.payload.data.body),
-        published: action.payload.data.published
-    };
-
-    return axios.post(`${config.apiUrl}configuration/${action.payload.userId}`, submittedData, {withCredentials: true});
-}
-
-const updateConfigurationCall = (action) => {
-    let submittedData = {
-        name: action.payload.data.name,
-        description: action.payload.data.description,
-        body: JSON.stringify(action.payload.data.body),
-        published: action.payload.data.published
-    };
-
-    return axios.put(`${config.apiUrl}configuration/${action.payload.userId}/${action.payload.data.key}`, submittedData, {withCredentials: true});
-}
-
 const deleteConfigurationCall = (action) => {
     return axios.delete(`${config.apiUrl}configuration/${action.payload.userId}/${action.payload.configurationId}`, {withCredentials: true});
 }
 
-export {checkAuthorizationCall, signInCall, createUserCall, updateUserCall, getSubusersCall, getSchemasCall, deleteUserCall, getConfigurationsCall,
-    createConfigurationCall, getDatabasesCall, updateConfigurationCall, deleteConfigurationCall, getGC2ConfigurationCall};
+export {
+    checkAuthorizationCall,
+    signInCall,
+    updateUserCall,
+    getSubusersCall,
+    getSchemasCall,
+    getConfigurationsCall,
+    getDatabasesCall,
+    deleteConfigurationCall,
+    getGC2ConfigurationCall,
+    processCall
+};

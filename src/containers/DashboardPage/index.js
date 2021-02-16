@@ -20,7 +20,10 @@ import saga from './saga';
 
 import {UploadFileTab} from "../../components/UploadFileTab";
 
-export class DashboardPage extends React.PureComponent {
+import {makeSelectProcessing, makeSelectProcessingError} from '../App/selectors';
+import {processRequest} from "../App/actions";
+
+export class DashboardPage extends React.Component {
 
     state = {
         activeTab: 0,
@@ -60,7 +63,9 @@ export class DashboardPage extends React.PureComponent {
                 index={this.state.activeTab}
                 onChangeIndex={this.handleChangeIndex}>
                 <div style={{paddingTop: `16px`, paddingLeft: `4px`, paddingRight: `4px`}}>
-                    <UploadFileTab />
+                    <UploadFileTab
+                        onProcess={(data) => { this.props.dispatch(processRequest(data)); }}
+                    />
                 </div>
                 <div style={{paddingTop: `16px`, paddingLeft: `4px`, paddingRight: `4px`}}>
                     <h1>TEST2</h1>
@@ -77,7 +82,8 @@ export class DashboardPage extends React.PureComponent {
 }
 
 const mapStateToProps = createStructuredSelector({
-    user: makeSelectUser()
+   processing: makeSelectProcessing(),
+   processingError: makeSelectProcessingError()
 });
 
 const withConnect = connect(mapStateToProps);

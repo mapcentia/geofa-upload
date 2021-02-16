@@ -1,13 +1,15 @@
 import { fromJS } from 'immutable';
 
-import { SIGN_OUT, CHECK_AUTHORIZATION_REQUEST, CHECK_AUTHORIZATION_SUCCESS, CHECK_AUTHORIZATION_FAILURE,
+import {
+    SIGN_OUT, CHECK_AUTHORIZATION_REQUEST, CHECK_AUTHORIZATION_SUCCESS, CHECK_AUTHORIZATION_FAILURE,
     SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_FAILURE,
-    GET_DATABASES_RESET, GET_DATABASES_REQUEST, GET_DATABASES_SUCCESS, GET_DATABASES_FAILURE,
+    GET_DATABASES_RESET, GET_DATABASES_REQUEST, GET_DATABASES_SUCCESS,
     UPDATE_USER_REQUEST, UPDATE_USER_SUCCESS, UPDATE_USER_FAILURE, UPDATE_USER_PASSWORD_SUCCESS,
     GET_SUBUSERS_REQUEST, GET_SUBUSERS_SUCCESS, GET_SUBUSERS_FAILURE,
     GET_SCHEMAS_REQUEST, GET_SCHEMAS_SUCCESS, GET_SCHEMAS_FAILURE,
     GET_GC2_CONFIGURATION_REQUEST, GET_GC2_CONFIGURATION_SUCCESS,
-    CREATE_UPDATE_USER_RESET } from './constants';
+    CREATE_UPDATE_USER_RESET, PROCESS_REQUEST, PROCESS_SUCCESS, PROCESS_FAILURE
+} from './constants';
 
 const initialState = fromJS({
     gc2Configuration: false,
@@ -42,6 +44,10 @@ const initialState = fromJS({
     updateConfiguration: false,
     updateConfigurationSuccess: false,
     updateConfigurationError: false,
+
+    processing: false,
+    processingSuccess: false,
+    processingError: false,
 
     availableDatabasesList: false,
     availableDatabasesUserName: ``,
@@ -195,6 +201,30 @@ function appReducer(state = initialState, action) {
         case GET_SCHEMAS_FAILURE:
             return Object.assign({}, state, {
                 isRequesting: false,
+            });
+
+        case PROCESS_REQUEST:
+            return Object.assign({}, state, {
+                isRequesting: true,
+                processing: true,
+                processingSuccess: false,
+                processError: false,
+            });
+        case PROCESS_SUCCESS:
+            return Object.assign({}, state, {
+                isRequesting: false,
+                processing: false,
+                processingSuccess: true,
+                processingError: false,
+                data: action.payload
+            });
+        case PROCESS_FAILURE:
+            return Object.assign({}, state, {
+                isRequesting: false,
+                processing: false,
+                processingSuccess: false,
+                processingError: true,
+                data: false
             });
 
         default:

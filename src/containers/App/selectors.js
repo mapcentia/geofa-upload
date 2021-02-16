@@ -12,19 +12,16 @@ const makeSelectUser = () => createSelector(selectGlobal, globalState => globalS
 const makeSelectSigningIn = () => createSelector(selectGlobal, globalState => globalState.signingIn);
 const makeSelectSigningInError = () => createSelector(selectGlobal, globalState => globalState.signingInError);
 
+const makeSelectProcessing = () => createSelector(selectGlobal, globalState => globalState.processing);
+const makeSelectProcessingError = () => createSelector(selectGlobal, globalState => globalState.processingError);
+
 const makeSelectAvailableDatabasesList = () => createSelector(selectGlobal, globalState => globalState.availableDatabasesList);
 const makeSelectAvailableDatabasesUserName = () => createSelector(selectGlobal, globalState => globalState.availableDatabasesUserName);
 
 const makeSelectCreateUser = () => createSelector(selectGlobal, globalState => globalState.createUser);
-const makeSelectCreateUserSuccess = () => createSelector(selectGlobal, globalState => globalState.createUserSuccess);
-const makeSelectCreateUserSuccessUserName = () => createSelector(selectGlobal, globalState => globalState.createUserSuccessUserName);
 const makeSelectCreateUserError = () => createSelector(selectGlobal, globalState => globalState.createUserError);
-const makeSelectCreateUserErrorCode = () => createSelector(selectGlobal, globalState => globalState.createUserErrorCode);
 
-const makeSelectUpdateUserSuccess = () => createSelector(selectGlobal, globalState => globalState.updateUserSuccess);
-const makeSelectUpdateUserSuccessUserName = () => createSelector(selectGlobal, globalState => globalState.updateUserSuccessUserName);
 const makeSelectUpdateUserError = () => createSelector(selectGlobal, globalState => globalState.updateUserError);
-const makeSelectUpdateUserErrorCode = () => createSelector(selectGlobal, globalState => globalState.updateUserErrorCode);
 
 const makeSelectIsRequesting = () => createSelector(selectGlobal, globalState => globalState.isRequesting);
 const makeSelectSubusers = () => createSelector(selectGlobal, globalState => globalState.subusers);
@@ -32,11 +29,9 @@ const makeSelectSchemas = () => createSelector(selectGlobal, globalState => glob
 const makeSelectConfigurations = () => createSelector(selectGlobal, globalState => globalState.configurations);
 
 const makeSelectCreateConfigurationLoading = () => createSelector(selectGlobal, globalState => globalState.createConfiguration);
-const makeSelectCreateConfigurationSuccess = () => createSelector(selectGlobal, globalState => globalState.createConfigurationSuccess);
 const makeSelectCreateConfigurationError = () => createSelector(selectGlobal, globalState => globalState.createConfigurationError);
 
 const makeSelectUpdateConfigurationLoading = () => createSelector(selectGlobal, globalState => globalState.updateConfiguration);
-const makeSelectUpdateConfigurationSuccess = () => createSelector(selectGlobal, globalState => globalState.updateConfigurationSuccess);
 const makeSelectUpdateConfigurationError = () => createSelector(selectGlobal, globalState => globalState.updateConfigurationError);
 
 export {
@@ -50,31 +45,26 @@ export {
     makeSelectUser,
     makeSelectSigningIn,
     makeSelectSigningInError,
+
+    makeSelectProcessing,
+    makeSelectProcessingError,
+
     makeSelectCreateUser,
 
     makeSelectAvailableDatabasesList,
     makeSelectAvailableDatabasesUserName,
 
-    makeSelectCreateUserSuccess,
-    makeSelectCreateUserSuccessUserName,
     makeSelectCreateUserError,
-    makeSelectCreateUserErrorCode,
 
-    makeSelectUpdateUserSuccess,
-    makeSelectUpdateUserSuccessUserName,
     makeSelectUpdateUserError,
-    makeSelectUpdateUserErrorCode,
-
     makeSelectIsRequesting,
     makeSelectSubusers,
     makeSelectSchemas,
     makeSelectConfigurations,
 
     makeSelectCreateConfigurationLoading,
-    makeSelectCreateConfigurationSuccess,
     makeSelectCreateConfigurationError,
 
     makeSelectUpdateConfigurationLoading,
-    makeSelectUpdateConfigurationSuccess,
     makeSelectUpdateConfigurationError,
 };

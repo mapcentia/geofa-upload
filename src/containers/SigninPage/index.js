@@ -5,14 +5,11 @@ import styled from 'styled-components';
 import {createStructuredSelector} from 'reselect';
 
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 
 import {makeSelectSigningIn, makeSelectSigningInError} from '../App/selectors';
 import {signInRequest, getDatabasesRequest, getDatabasesReset} from '../App/actions';
 import SigninForm from './SigninForm';
 import PublicFormsWrapper from '../../components/PublicFormsWrapper';
-import StyledLink from '../../components/StyledLink';
 
 const ErrorWrapper = styled.div`
   padding-top: 10px;
@@ -29,9 +26,15 @@ class Login extends React.Component {
             <PublicFormsWrapper>
                 <SigninForm
                     disabled={this.props.signingIn ? true : false}
-                    onGetDatabases={(userName) => { this.props.dispatch(getDatabasesRequest(userName))}}
-                    onReset={() => { this.props.dispatch(getDatabasesReset())}}
-                    onSubmit={(data) => { this.props.dispatch(signInRequest(data)); }}/>
+                    onGetDatabases={(userName) => {
+                        this.props.dispatch(getDatabasesRequest(userName))
+                    }}
+                    onReset={() => {
+                        this.props.dispatch(getDatabasesReset())
+                    }}
+                    onSubmit={(data) => {
+                        this.props.dispatch(signInRequest(data));
+                    }}/>
                 {this.props.signingInError ? (
                     <ErrorWrapper>
                         <Typography variant="body1" gutterBottom color="error">
