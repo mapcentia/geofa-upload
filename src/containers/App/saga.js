@@ -4,15 +4,9 @@ import {
     checkAuthorizationSuccess, checkAuthorizationFailure,
     signInSuccess, signInFailure,
     getDatabasesSuccess, getDatabasesFailure,
-    createUserSuccess, createUserFailure,
     updateUserSuccess, updateUserFailure, updateUserPasswordSuccess,
-    deleteUserSuccess, deleteUserFailure,
     getSubusersRequest, getSubusersSuccess, getSubusersFailure,
     getSchemasRequest, getSchemasSuccess, getSchemasFailure,
-    getConfigurationsSuccess, getConfigurationsFailure,
-    createConfigurationSuccess, createConfigurationFailure,
-    updateConfigurationSuccess, updateConfigurationFailure,
-    deleteConfigurationSuccess, deleteConfigurationFailure, getConfigurationsRequest,
     getGC2ConfigurationSuccess, checkAuthorizationRequest
 } from './actions';
 
@@ -24,13 +18,7 @@ import {
     SIGN_IN_REQUEST,
     SIGN_OUT,
     GET_DATABASES_REQUEST,
-    CREATE_USER_REQUEST,
     UPDATE_USER_REQUEST,
-    DELETE_USER_REQUEST,
-    GET_CONFIGURATIONS_REQUEST,
-    CREATE_CONFIGURATION_REQUEST,
-    UPDATE_CONFIGURATION_REQUEST,
-    DELETE_CONFIGURATION_REQUEST,
     GET_SUBUSERS_REQUEST,
     GET_SCHEMAS_REQUEST,
     GET_GC2_CONFIGURATION_REQUEST
@@ -80,23 +68,6 @@ export function* getDatabasesGenerator(data) {
     }
 }
 
-export function* createUserGenerator(data) {
-    const response = yield call(createUserCall, data);
-    try {
-        if (response.status && response.status === 200) {
-            yield put(createUserSuccess(response.data.data.screenname));
-        } else {
-            if (response.data && response.data.errorCode) {
-                yield put(createUserFailure(response.data.errorCode));
-            } else {
-                yield put(createUserFailure());
-            }
-        }
-    } catch (err) {
-        console.error(err);
-        yield put(createUserFailure());
-    }
-}
 
 export function* signOutGenerator() {
     yield put(push(`${appBaseURL}sign-in`));
@@ -125,17 +96,6 @@ export function* updateUserGenerator(action) {
     }
 }
 
-export function* deleteUserGenerator(action) {
-    const response = yield call(deleteUserCall, action);
-    try {
-        yield put(deleteUserSuccess());
-        yield put(getSubusersRequest(action));
-    } catch (err) {
-        console.error(err);
-        yield put(deleteUserFailure());
-    }
-}
-
 export function* getSubusersGenerator(action) {
     const response = yield call(getSubusersCall, action);
     try {
@@ -154,46 +114,10 @@ export function* getSchemasGenerator(action) {
     }
 }
 
-export function* getConfigurationsGenerator(action) {
-    const response = yield call(getConfigurationsCall, action);
-    try {
-        yield put(getConfigurationsSuccess(response.data.data));
-    } catch (err) {
-        yield put(getConfigurationsFailure());
-    }
-}
 
 export function* forceUserUpdateGenerator(action) {
     if (action.payload.passwordExpired) {
         yield put(push(`${appBaseURL}account`));
-    }
-}
-
-export function* createConfigurationGenerator(action) {
-    const response = yield call(createConfigurationCall, action);
-    try {
-        yield put(createConfigurationSuccess(response.data.data));
-    } catch (err) {
-        yield put(createConfigurationFailure());
-    }
-}
-
-export function* updateConfigurationGenerator(action) {
-    const response = yield call(updateConfigurationCall, action);
-    try {
-        yield put(updateConfigurationSuccess(response.data.data));
-    } catch (err) {
-        yield put(updateConfigurationFailure());
-    }
-}
-
-export function* deleteConfigurationGenerator(action) {
-    const response = yield call(deleteConfigurationCall, action);
-    try {
-        yield put(deleteConfigurationSuccess(response.data.data));
-        yield put(getConfigurationsRequest(action.payload));
-    } catch (err) {
-        yield put(deleteConfigurationFailure());
     }
 }
 
@@ -221,15 +145,9 @@ export default function* checkAuthorization() {
     yield takeLatest(SIGN_IN_REQUEST, signInGenerator);
     yield takeLatest(GET_DATABASES_REQUEST, getDatabasesGenerator);
     yield takeLatest(SIGN_OUT, signOutGenerator);
-    yield takeLatest(CREATE_USER_REQUEST, createUserGenerator);
     yield takeLatest(UPDATE_USER_REQUEST, updateUserGenerator);
-    yield takeLatest(DELETE_USER_REQUEST, deleteUserGenerator);
     yield takeLatest(CHECK_AUTHORIZATION_SUCCESS, forceUserUpdateGenerator);
     yield takeLatest(GET_SUBUSERS_REQUEST, getSubusersGenerator);
     yield takeLatest(GET_SCHEMAS_REQUEST, getSchemasGenerator);
-    yield takeLatest(GET_CONFIGURATIONS_REQUEST, getConfigurationsGenerator);
-    yield takeLatest(CREATE_CONFIGURATION_REQUEST, createConfigurationGenerator);
-    yield takeLatest(UPDATE_CONFIGURATION_REQUEST, updateConfigurationGenerator);
-    yield takeLatest(DELETE_CONFIGURATION_REQUEST, deleteConfigurationGenerator);
     yield takeLatest(GET_GC2_CONFIGURATION_REQUEST, getGC2ConfigurationGenerator);
 }
