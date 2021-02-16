@@ -14,6 +14,18 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+import Uppy from '@uppy/core'
+import Tus from '@uppy/tus'
+import FileInput from '@uppy/file-input'
+import XHRUpload from '@uppy/xhr-upload'
+
+import { DragDrop } from '@uppy/react'
+import { Dashboard } from '@uppy/react'
+import '@uppy/core/dist/style.css'
+import '@uppy/dashboard/dist/style.css'
+import Danish from '@uppy/locales/lib/da_DK'
+
+
 import StyledButtonLink from '../StyledButtonLink';
 import { makeSelectUser, makeSelectSubusers } from '../../containers/App/selectors';
 import { getSubusersRequest, createUserRequest, updateUserRequest, createUpdateUserReset } from '../../containers/App/actions';
@@ -43,6 +55,39 @@ const OverlayInner = styled.div`
 `;
 
 const NULL_VALUE = `null`;
+
+const uppy = new Uppy({
+    locale: Danish
+});
+
+let ext = ["shp", "tab", "geojson", "gml", "kml", "kmz", "mif", "zip", "rar", "dwg", "dgn", "dxf", "csv", "mdb", "accdb"]
+
+let fileArr = [];
+
+//uppy.use(Tus, { endpoint: 'http://localhost:8080/controllers/upload/vector' });
+uppy.use(XHRUpload, {
+    endpoint: 'http://localhost:8080/controllers/upload/vector',
+    formData: true,
+    fieldName: 'file',
+    withCredentials: true
+})
+
+uppy.on('files-added', (files) => {
+    files.forEach((file)=>{
+        ext.forEach((e)=>{
+            if (file.extension.toLowerCase() === e && !fileArr.includes(file.name)) {
+                fileArr.push(file.name)
+            }
+        })
+    })
+})
+
+uppy.on('complete', (result) => {
+    const url = result.successful[0].uploadURL
+    console.log(fileArr);
+
+})
+
 
 export class UploadFileTab extends React.PureComponent {
     constructor(props) {
@@ -98,6 +143,13 @@ export class UploadFileTab extends React.PureComponent {
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
                         <FormattedMessage id="containers.UploadFileTab.description"/>
                     </Typography>
+                    <div>
+                        <Dashboard
+                            uppy={uppy}
+                            width={'100%'}
+                            proudlyDisplayPoweredByUppy={false}
+                        />
+                    </div>
                 </Grid>
             </Grid>
         </div>);
