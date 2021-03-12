@@ -24,10 +24,11 @@ import LanguageProvider from './containers/LanguageProvider';
 import configureStore from './configureStore';
 
 // Import i18n messages
-import {translationMessages} from './i18n';
+//import {translationMessages} from './i18n';
 import {createMuiTheme} from "@material-ui/core/styles";
 import {ThemeProvider} from '@material-ui/core/styles';
 
+let translationMessages = require('./i18n');
 // Create redux store with history
 const initialState = {};
 const store = configureStore(initialState, history);
