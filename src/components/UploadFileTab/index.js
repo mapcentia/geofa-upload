@@ -1,26 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {FormattedMessage} from 'react-intl';
-import {createStructuredSelector} from 'reselect';
-import {injectIntl} from 'react-intl';
+import {FormattedHTMLMessage} from 'react-intl';
 import styled from 'styled-components';
-
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-
 import Uppy from '@uppy/core'
 import XHRUpload from '@uppy/xhr-upload'
-
 import {Dashboard} from '@uppy/react'
 import '@uppy/core/dist/style.css'
 import '@uppy/dashboard/dist/style.css'
 import Danish from '@uppy/locales/lib/da_DK'
-
 import StyledButtonLink from '../StyledButtonLink';
-import {makeSelectProcessing} from "../../containers/App/selectors";
-
+import UploadResultLog from "./UploadResultLog";
+import config from './../../config';
 // import SnackbarContent from 'components/SnackbarContent';
 
 const TextFieldWrapper = styled.div`
@@ -46,12 +40,12 @@ const uppy = new Uppy({
     locale: Danish
 });
 
-let ext = ["shp", "tab", "geojson", "gml", "kml", "kmz", "mif", "zip", "rar", "dwg", "dgn", "dxf", "csv", "mdb", "accdb"]
+let ext = ["shp", "tab", "geojson", "gml", "kml", "kmz", "mif", "zip", "rar", "dwg", "dgn", "dxf", "csv", "mdb", "accdb", "gpkg"]
 
 let fileArr = [];
 
 uppy.use(XHRUpload, {
-    endpoint: 'http://localhost:8080/controllers/upload/vector',
+    endpoint: `${config.apiUrl}controllers/upload/vector`,
     formData: true,
     fieldName: 'file',
     withCredentials: true
@@ -68,22 +62,19 @@ uppy.on('files-added', (files) => {
 })
 
 
-export class UploadFileTab extends React.Component {
+class UploadFileTab extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {}
     }
 
     componentWillMount() {
         uppy.on('complete', (result) => {
-            const url = result.successful[0].uploadURL
-            console.log(fileArr);
-            this.props.onProcess(fileArr)
+            fileArr.forEach(fileName => {
+                this.props.onProcess({fileName: fileName});
+            })
+            fileArr = [];
         })
-    }
 
-    componentWillReceiveProps(nextProps) {
     }
 
     render() {
@@ -105,7 +96,7 @@ export class UploadFileTab extends React.Component {
                     {overlayContent}
                     <StyledButtonLink to={appBaseURL}>
                         <Button variant="contained" color="primary">
-                            <FormattedMessage id="Dashboard"/>
+                            <FormattedHTMLMessage id="Dashboard"/>
                         </Button>
                     </StyledButtonLink>
                 </OverlayInner>
@@ -118,10 +109,10 @@ export class UploadFileTab extends React.Component {
             <Grid container spacing={24}>
                 <Grid item md={12}>
                     <Typography variant="h6" color="inherit">
-                        Hej
+                        Upload GIS- og billedfiler
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
-                        <FormattedMessage id="containers.UploadFileTab.description"/>
+                        <FormattedHTMLMessage id="containers.UploadFileTab.description"/>
                     </Typography>
                     <div>
                         <Dashboard
@@ -130,14 +121,13 @@ export class UploadFileTab extends React.Component {
                             proudlyDisplayPoweredByUppy={false}
                         />
                     </div>
+                    <div>
+                        <UploadResultLog/>
+                    </div>
                 </Grid>
             </Grid>
         </div>);
     }
 }
 
-const mapStateToProps = createStructuredSelector({
-    processRequest: makeSelectProcessing(),
-});
-
-export default connect(mapStateToProps)(injectIntl(UploadFileTab));
+export default connect()(UploadFileTab);

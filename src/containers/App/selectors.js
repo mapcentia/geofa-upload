@@ -34,6 +34,9 @@ const makeSelectCreateConfigurationError = () => createSelector(selectGlobal, gl
 const makeSelectUpdateConfigurationLoading = () => createSelector(selectGlobal, globalState => globalState.updateConfiguration);
 const makeSelectUpdateConfigurationError = () => createSelector(selectGlobal, globalState => globalState.updateConfigurationError);
 
+const makeSelectUploadResult= () => createSelector(selectGlobal, globalState => globalState.uploadResult);
+
+
 export {
     selectGlobal,
 
@@ -67,4 +70,6 @@ export {
 
     makeSelectUpdateConfigurationLoading,
     makeSelectUpdateConfigurationError,
+
+    makeSelectUploadResult,
 };

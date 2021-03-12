@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import {fromJS} from 'immutable';
 
 import {
     SIGN_OUT, CHECK_AUTHORIZATION_REQUEST, CHECK_AUTHORIZATION_SUCCESS, CHECK_AUTHORIZATION_FAILURE,
@@ -55,9 +55,13 @@ const initialState = fromJS({
     subusers: [],
     schemas: [],
     configurations: [],
+
+    uploadResult: ``,
+    uploadError: ``,
 });
 
 function appReducer(state = initialState, action) {
+    console.log(action)
     switch (action.type) {
         case GET_GC2_CONFIGURATION_REQUEST:
             return Object.assign({}, state, {
@@ -209,6 +213,7 @@ function appReducer(state = initialState, action) {
                 processing: true,
                 processingSuccess: false,
                 processError: false,
+                uploadResult: "Processing"
             });
         case PROCESS_SUCCESS:
             return Object.assign({}, state, {
@@ -216,7 +221,12 @@ function appReducer(state = initialState, action) {
                 processing: false,
                 processingSuccess: true,
                 processingError: false,
-                data: action.payload
+                uploadResult: (() => {
+                    let inserted = action.payload?.data?.fkg_report?.inserted_ids.join("\n");
+                    let updated = action.payload?.data?.fkg_report?.updated_ids.join("\n");
+                    let themeName = action.payload?.data?.theme_name;
+                    return `Indsatte i ${themeName}:\n${inserted}\nOpdateret i ${themeName}:\n${updated}`;
+                })()
             });
         case PROCESS_FAILURE:
             return Object.assign({}, state, {
@@ -224,7 +234,7 @@ function appReducer(state = initialState, action) {
                 processing: false,
                 processingSuccess: false,
                 processingError: true,
-                data: false
+                uploadResult: action.payload.data.message
             });
 
         default:

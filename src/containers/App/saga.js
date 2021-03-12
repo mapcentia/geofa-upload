@@ -141,11 +141,14 @@ export function* getGC2ConfigurationGenerator() {
 
 export function* processGenerator(credentials) {
     try {
-        const result = yield call(processCall, credentials);
-        yield put(processSuccess(result));
+        const response = yield call(processCall, credentials);
+        if (response.status === 200)
+            yield put(processSuccess(response));
+        else
+            yield put(processFailure(response));
 
     } catch (err) {
-        yield put(processFailure());
+        yield put(processFailure(err));
     }
 }
 

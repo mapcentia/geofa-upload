@@ -1,5 +1,5 @@
 const config = {
-    apiUrl: `http://localhost:8080/api/v2/`
+    apiUrl: `https://geofa-test.admin.gc2.io/`
 };
 
 export default config;

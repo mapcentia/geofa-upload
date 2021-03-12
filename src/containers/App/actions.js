@@ -140,15 +140,13 @@ export function getSchemasFailure() {
 
 // Process uploads
 export function processRequest(payload) {
-    console.log("payload", payload)
     return {type: PROCESS_REQUEST, payload};
 }
 
 export function processSuccess(payload) {
-    return {type: PROCESS_SUCCESS, payload: normalizeUser(payload)};
+    return {type: PROCESS_SUCCESS, payload: payload};
 }
 
-export function processFailure() {
-    alert()
-    return {type: PROCESS_FAILURE};
+export function processFailure(payload) {
+    return {type: PROCESS_FAILURE, payload: payload};
 }

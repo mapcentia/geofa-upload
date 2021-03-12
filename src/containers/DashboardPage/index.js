@@ -14,11 +14,10 @@ import injectReducer from '../../utils/injectReducer';
 import injectSaga from '../../utils/injectSaga';
 
 
-import {makeSelectUser} from '../App/selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-import {UploadFileTab} from "../../components/UploadFileTab";
+import UploadFileTab from "../../components/UploadFileTab";
 
 import {makeSelectProcessing, makeSelectProcessingError} from '../App/selectors';
 import {processRequest} from "../App/actions";
@@ -54,7 +53,6 @@ export class DashboardPage extends React.Component {
                     indicatorColor="primary"
                     textColor="primary">
                     <Tab label={this.props.intl.formatMessage({id: `Upload files`})}/>
-                    <Tab label={this.props.intl.formatMessage({id: `Upload images`})}/>
                     <Tab label={this.props.intl.formatMessage({id: `Relate images`})}/>
                     <Tab label={this.props.intl.formatMessage({id: `Get data`})}/>
                 </Tabs>
