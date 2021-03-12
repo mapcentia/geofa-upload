@@ -28,7 +28,7 @@ import configureStore from './configureStore';
 import {createMuiTheme} from "@material-ui/core/styles";
 import {ThemeProvider} from '@material-ui/core/styles';
 
-let translationMessages = require('./i18n');
+let translationMessages = require('./i18n').translationMessages;
 // Create redux store with history
 const initialState = {};
 const store = configureStore(initialState, history);
