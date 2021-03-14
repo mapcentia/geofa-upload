@@ -10,7 +10,6 @@ import {
     getGC2ConfigurationSuccess, checkAuthorizationRequest, processSuccess, processFailure
 } from './actions';
 
-import {changeLocale} from '../LanguageProvider/actions';
 
 import {
     CHECK_AUTHORIZATION_REQUEST,
@@ -127,9 +126,9 @@ export function* getGC2ConfigurationGenerator() {
         yield put(checkAuthorizationRequest({}));
         if (response.data && response.data.gc2Al) {
             if (response.data.gc2Al.indexOf(`da_`) === 0) {
-                yield put(changeLocale(`da`));
+                yield put(`da`);
             } else if (response.data.gc2Al.indexOf(`en_`) === 0) {
-                yield put(changeLocale(`en`));
+                yield put(`en`);
             }
         }
     } catch (err) {

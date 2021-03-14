@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {FormattedHTMLMessage} from 'react-intl';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -96,7 +95,7 @@ class UploadFileTab extends React.Component {
                     {overlayContent}
                     <StyledButtonLink to={appBaseURL}>
                         <Button variant="contained" color="primary">
-                            <FormattedHTMLMessage id="Dashboard"/>
+                            text
                         </Button>
                     </StyledButtonLink>
                 </OverlayInner>
@@ -112,7 +111,7 @@ class UploadFileTab extends React.Component {
                         Upload GIS- og billedfiler
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
-                        <FormattedHTMLMessage id="containers.UploadFileTab.description"/>
+                        en anden tekst
                     </Typography>
                     <div>
                         <Dashboard

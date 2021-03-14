@@ -4,8 +4,6 @@ import {createStructuredSelector} from 'reselect';
 import {Redirect} from 'react-router';
 import {Route} from 'react-router-dom';
 import {withRouter} from "react-router";
-import {FormattedMessage} from 'react-intl';
-
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import AppBar from '@material-ui/core/AppBar';
@@ -26,8 +24,6 @@ import AppLoadingOverlay from '../../components/AppLoadingOverlay';
 import {makeSelectIsAuthenticating, makeSelectIsAuthenticated, makeSelectUser} from '../App/selectors';
 
 import MainContentWrapper from '../../components/MainContentWrapper';
-
-
 
 class ProtectedLayout extends React.Component {
     constructor(props) {
@@ -66,7 +62,7 @@ class ProtectedLayout extends React.Component {
                                     <Grid item>
                                         <StyledButtonLink to={prefix}>
                                             <Typography variant="h6" color="inherit">
-                                                <FormattedMessage id="Geocloud Dashboard"/>
+                                                Geocloud Dashboard
                                             </Typography>
                                         </StyledButtonLink>
                                     </Grid>
@@ -79,7 +75,7 @@ class ProtectedLayout extends React.Component {
                                         </div>
                                         <div style={{display: `inline-block`}}>
                                             <Button color="inherit" onClick={this.props.onSignOut}>
-                                                <FormattedMessage id="Sign out"/>
+                                                Sign ou
                                             </Button>
                                         </div>
                                     </Grid>

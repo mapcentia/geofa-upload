@@ -1,5 +1,4 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import StyledLink from '../../components/StyledLink';
 
 import Button from '@material-ui/core/Button';
@@ -11,14 +10,14 @@ export default function NotFound() {
     let appBaseURL = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
     return (<div>
         <Typography variant="h3" gutterBottom>
-            <FormattedMessage id={`${translationPrefix}.notFound`} />
+           Not found
         </Typography>
         <Typography variant="subtitle1" gutterBottom>
-            <FormattedMessage id={`${translationPrefix}.pleaseCheckTheAddressOrContactTheSupport`} />
+            Tjek
         </Typography>
         <StyledLink to={appBaseURL}>
             <Button variant="contained" color="primary">
-                <FormattedMessage id={`${translationPrefix}.homePage`} />
+                sds
             </Button>
         </StyledLink>
     </div>);
