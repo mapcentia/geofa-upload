@@ -4,8 +4,6 @@ import {createStructuredSelector} from 'reselect';
 import {Redirect} from 'react-router';
 import {Route} from 'react-router-dom';
 import {withRouter} from "react-router";
-import {FormattedMessage} from 'react-intl';
-
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import AppBar from '@material-ui/core/AppBar';
@@ -27,7 +25,7 @@ import {makeSelectIsAuthenticating, makeSelectIsAuthenticated, makeSelectUser} f
 
 import MainContentWrapper from '../../components/MainContentWrapper';
 
-
+import config from './../../config'
 
 class ProtectedLayout extends React.Component {
     constructor(props) {
@@ -35,7 +33,7 @@ class ProtectedLayout extends React.Component {
     }
 
     render() {
-        let prefix = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
+        let prefix = config.homepage;
         const {children} = this.props;
         if (this.props.isAuthenticating === false) {
             if (this.props.isAuthenticated) {
@@ -66,7 +64,7 @@ class ProtectedLayout extends React.Component {
                                     <Grid item>
                                         <StyledButtonLink to={prefix}>
                                             <Typography variant="h6" color="inherit">
-                                                <FormattedMessage id="Geocloud Dashboard"/>
+                                                Geocloud Dashboard
                                             </Typography>
                                         </StyledButtonLink>
                                     </Grid>
@@ -79,7 +77,7 @@ class ProtectedLayout extends React.Component {
                                         </div>
                                         <div style={{display: `inline-block`}}>
                                             <Button color="inherit" onClick={this.props.onSignOut}>
-                                                <FormattedMessage id="Sign out"/>
+                                                Sign ou
                                             </Button>
                                         </div>
                                     </Grid>

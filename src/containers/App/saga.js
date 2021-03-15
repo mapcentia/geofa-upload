@@ -10,7 +10,6 @@ import {
     getGC2ConfigurationSuccess, checkAuthorizationRequest, processSuccess, processFailure
 } from './actions';
 
-import {changeLocale} from '../LanguageProvider/actions';
 
 import {
     CHECK_AUTHORIZATION_REQUEST,
@@ -30,7 +29,9 @@ import {
     getGC2ConfigurationCall, processCall
 } from '../../api';
 
-const appBaseURL = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
+import config from './../../config'
+
+const appBaseURL = config.homepage;
 
 export function* checkAuthorizationGenerator() {
     try {
@@ -127,9 +128,9 @@ export function* getGC2ConfigurationGenerator() {
         yield put(checkAuthorizationRequest({}));
         if (response.data && response.data.gc2Al) {
             if (response.data.gc2Al.indexOf(`da_`) === 0) {
-                yield put(changeLocale(`da`));
+                yield put(`da`);
             } else if (response.data.gc2Al.indexOf(`en_`) === 0) {
-                yield put(changeLocale(`en`));
+                yield put(`en`);
             }
         }
     } catch (err) {

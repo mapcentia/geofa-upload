@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -56,7 +55,7 @@ class SigninForm extends React.Component {
                     });
 
                     databaseSelector = (<FormControl fullWidth>
-                        <InputLabel shrink><FormattedMessage id={`Select database`} /></InputLabel>
+                        <InputLabel shrink>Select database</InputLabel>
                         <NativeSelect
                             fullWidth
                             value={this.state.selectedDatabase}
@@ -81,7 +80,7 @@ class SigninForm extends React.Component {
                         name="username"
                         autoFocus
                         required
-                        label={this.props.intl.formatMessage({id: "Username or email"})}
+                        label="Username or email"
                         disabled={this.props.disabled}
                         value={this.state.user}
                         onChange={(event) => {
@@ -95,7 +94,7 @@ class SigninForm extends React.Component {
 
                 {step === STEP_PASSWORD ? (<div>
                     {this.props.databases.length === 0 ? (<div>
-                        <FormattedMessage id={`No databases found for the specified user`} />
+                        No databases found for the specified user
                     </div>) : false}
                     {this.props.databases.length > 1 ? (<div>
                         {databaseSelector}
@@ -107,7 +106,7 @@ class SigninForm extends React.Component {
                             name="password"
                             type="password"
                             required
-                            label={this.props.intl.formatMessage({id: "Password"})}
+                            label="Password"
                             disabled={this.props.disabled}
                             value={this.state.password} onChange={(event) => { this.setState({ password: event.target.value }) }}/>
                     </FormControl>) : false}
@@ -120,7 +119,7 @@ class SigninForm extends React.Component {
                 variant="contained"
                 disabled={this.props.disabled || this.state.user.length < MIN_LENGTH}
                 color="primary">
-                <FormattedMessage id={`Enter password`} />
+                Enter password
             </Button>) : (<Button
                 type="submit"
                 onClick={() => { this.props.onSubmit({
@@ -131,7 +130,7 @@ class SigninForm extends React.Component {
                 fullWidth
                 variant="contained"
                 disabled={!readyToSubmit} color="primary">
-                <FormattedMessage id={`Sign in`} />
+                Sign in
             </Button>)}
         </form>);
     }
@@ -148,4 +147,4 @@ const mapStateToProps = createStructuredSelector({
     databasesLastUserName: makeSelectAvailableDatabasesUserName(),
 });
 
-export default connect(mapStateToProps)(injectIntl(SigninForm));
+export default connect(mapStateToProps)(SigninForm);

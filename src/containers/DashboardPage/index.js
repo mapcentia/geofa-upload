@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import {createStructuredSelector} from 'reselect';
-import {injectIntl} from 'react-intl';
 import SwipeableViews from 'react-swipeable-views';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -52,9 +51,9 @@ export class DashboardPage extends React.Component {
                     onChange={this.handleChangeActiveTab}
                     indicatorColor="primary"
                     textColor="primary">
-                    <Tab label={this.props.intl.formatMessage({id: `Upload files`})}/>
-                    <Tab label={this.props.intl.formatMessage({id: `Relate images`})}/>
-                    <Tab label={this.props.intl.formatMessage({id: `Get data`})}/>
+                    <Tab label="sad"/>
+                    <Tab label="sasaa"/>
+                    <Tab label="sdsd"/>
                 </Tabs>
             </AppBar>
             <SwipeableViews
@@ -89,4 +88,4 @@ const withConnect = connect(mapStateToProps);
 const withReducer = injectReducer({key: 'home', reducer});
 const withSaga = injectSaga({key: 'home', saga});
 
-export default compose(withReducer, withSaga, withConnect)(injectIntl(DashboardPage));
+export default compose(withReducer, withSaga, withConnect)(DashboardPage);

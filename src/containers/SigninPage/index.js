@@ -1,5 +1,4 @@
 import React from 'react';
-import {FormattedMessage} from 'react-intl';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import {createStructuredSelector} from 'reselect';
@@ -21,7 +20,6 @@ class Login extends React.Component {
     }
 
     render() {
-        let prefix = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
         return (
             <PublicFormsWrapper>
                 <SigninForm
@@ -38,7 +36,7 @@ class Login extends React.Component {
                 {this.props.signingInError ? (
                     <ErrorWrapper>
                         <Typography variant="body1" gutterBottom color="error">
-                            <FormattedMessage id="Invalid username or password"/>
+                            Invalid username or password
                         </Typography>
                     </ErrorWrapper>
                 ) : false}
