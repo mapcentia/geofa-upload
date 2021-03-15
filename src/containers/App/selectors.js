@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect';
+import {createSelector} from 'reselect';
 
 const selectGlobal = state => state.get('global');
 
@@ -34,7 +34,16 @@ const makeSelectCreateConfigurationError = () => createSelector(selectGlobal, gl
 const makeSelectUpdateConfigurationLoading = () => createSelector(selectGlobal, globalState => globalState.updateConfiguration);
 const makeSelectUpdateConfigurationError = () => createSelector(selectGlobal, globalState => globalState.updateConfigurationError);
 
-const makeSelectUploadResult= () => createSelector(selectGlobal, globalState => globalState.uploadResult);
+const makeSelectUploadResult = () => createSelector(selectGlobal, globalState => {
+        if (typeof globalState.track === "undefined") {
+            globalState.track = "";
+        }
+        if (typeof globalState.uploadResult !== "undefined") {
+            globalState.track = globalState.uploadResult + "\n" + globalState.track;
+            return globalState.track;
+        }
+    }
+);
 
 
 export {

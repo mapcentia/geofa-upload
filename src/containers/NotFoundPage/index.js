@@ -10,14 +10,14 @@ export default function NotFound() {
     let appBaseURL = config.homepage;
     return (<div>
         <Typography variant="h3" gutterBottom>
-           Not found
+           Ikke fundet
         </Typography>
         <Typography variant="subtitle1" gutterBottom>
-            Tjek
+            Tjek adressen eller kontakt supporten
         </Typography>
         <StyledLink to={appBaseURL}>
             <Button variant="contained" color="primary">
-                sds
+                Til forside
             </Button>
         </StyledLink>
     </div>);

@@ -51,14 +51,16 @@ export class DashboardPage extends React.Component {
                     onChange={this.handleChangeActiveTab}
                     indicatorColor="primary"
                     textColor="primary">
-                    <Tab label="sad"/>
-                    <Tab label="sasaa"/>
-                    <Tab label="sdsd"/>
+                    <Tab label="Upload"/>
+                    <Tab label="Tilknyt billeder"/>
+                    <Tab label="Hent data"/>
                 </Tabs>
             </AppBar>
             <SwipeableViews
                 index={this.state.activeTab}
-                onChangeIndex={this.handleChangeIndex}>
+                onChangeIndex={this.handleChangeIndex}
+                style={{width: `100%`}}
+                >
                 <div style={{paddingTop: `16px`, paddingLeft: `4px`, paddingRight: `4px`}}>
                     <UploadFileTab
                         onProcess={(data) => { this.props.dispatch(processRequest(data)); }}

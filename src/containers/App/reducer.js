@@ -55,9 +55,6 @@ const initialState = fromJS({
     subusers: [],
     schemas: [],
     configurations: [],
-
-    uploadResult: ``,
-    uploadError: ``,
 });
 
 function appReducer(state = initialState, action) {
@@ -213,7 +210,7 @@ function appReducer(state = initialState, action) {
                 processing: true,
                 processingSuccess: false,
                 processError: false,
-                uploadResult: "Processing"
+                uploadResult: `Processing ${action.payload?.fileName}`
             });
         case PROCESS_SUCCESS:
             return Object.assign({}, state, {
@@ -221,12 +218,7 @@ function appReducer(state = initialState, action) {
                 processing: false,
                 processingSuccess: true,
                 processingError: false,
-                uploadResult: (() => {
-                    let inserted = action.payload?.data?.fkg_report?.inserted_ids.join("\n");
-                    let updated = action.payload?.data?.fkg_report?.updated_ids.join("\n");
-                    let themeName = action.payload?.data?.theme_name;
-                    return `Indsatte i ${themeName}:\n${inserted}\nOpdateret i ${themeName}:\n${updated}`;
-                })()
+                uploadResult: `Indsatte i ${action.payload?.data?.theme_name}:\n${action.payload?.data?.fkg_report?.inserted_ids.join("\n")}\nOpdateret i ${action.payload?.data?.theme_name}:\n${action.payload?.data?.fkg_report?.updated_ids.join("\n")}`
             });
         case PROCESS_FAILURE:
             return Object.assign({}, state, {

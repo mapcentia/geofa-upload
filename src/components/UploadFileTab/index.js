@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import TextareaAutosize from "@material-ui/core/TextareaAutosize"
 import Uppy from '@uppy/core'
 import XHRUpload from '@uppy/xhr-upload'
 import {Dashboard} from '@uppy/react'
@@ -14,6 +15,8 @@ import Danish from '@uppy/locales/lib/da_DK'
 import StyledButtonLink from '../StyledButtonLink';
 import UploadResultLog from "./UploadResultLog";
 import config from './../../config';
+import {createStructuredSelector} from "reselect";
+import {makeSelectUploadResult} from "../../containers/App/selectors";
 // import SnackbarContent from 'components/SnackbarContent';
 
 const TextFieldWrapper = styled.div`
@@ -64,6 +67,7 @@ uppy.on('files-added', (files) => {
 class UploadFileTab extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {value: ""}
     }
 
     componentWillMount() {
@@ -120,13 +124,16 @@ class UploadFileTab extends React.Component {
                             proudlyDisplayPoweredByUppy={false}
                         />
                     </div>
-                    <div>
-                        <UploadResultLog/>
+                    <div><TextareaAutosize  defaultValue="Her bliver resultatet af seneste upload vist"
+                                           value={this.props.processRequestSuccess} style={{width: '100%', marginTop: "20px"}}/>
                     </div>
                 </Grid>
             </Grid>
         </div>);
     }
 }
+const mapStateToProps = createStructuredSelector({
+    processRequestSuccess: makeSelectUploadResult(),
+});
 
-export default connect()(UploadFileTab);
+export default connect(mapStateToProps)(UploadFileTab);

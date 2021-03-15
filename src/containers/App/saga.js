@@ -1,5 +1,5 @@
 import {push} from 'react-router-redux';
-import {call, put, takeLatest} from 'redux-saga/effects';
+import {call, put, takeLatest, takeEvery} from 'redux-saga/effects';
 import {
     checkAuthorizationSuccess, checkAuthorizationFailure,
     signInSuccess, signInFailure,
@@ -163,5 +163,5 @@ export default function* checkAuthorization() {
     yield takeLatest(GET_SUBUSERS_REQUEST, getSubusersGenerator);
     yield takeLatest(GET_SCHEMAS_REQUEST, getSchemasGenerator);
     yield takeLatest(GET_GC2_CONFIGURATION_REQUEST, getGC2ConfigurationGenerator);
-    yield takeLatest(PROCESS_REQUEST, processGenerator);
+    yield takeEvery(PROCESS_REQUEST, processGenerator);
 }

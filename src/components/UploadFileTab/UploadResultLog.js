@@ -7,10 +7,18 @@ import {makeSelectUploadResult} from "../../containers/App/selectors";
 export class UploadResultLog extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {value: ""}
+    }
+
+    onChange = (e) => {
+        alert(e.target.value)
+        this.setState({value: e.target.value + this.props.processRequestSuccess()})
     }
 
     render() {
-        return <TextareaAutosize  defaultValue="Her bliver resultatet af seneste upload vist" value={this.props.processRequestSuccess} style={{width: '100%', marginTop: "20px"}}/>
+        return <TextareaAutosize ref="upload_ref" defaultValue="Her bliver resultatet af seneste upload vist"
+                                 onChange={this.onChange}
+                                 value={this.state.value} style={{width: '100%', marginTop: "20px"}}/>
     }
 }
 

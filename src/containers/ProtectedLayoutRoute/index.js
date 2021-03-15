@@ -64,7 +64,7 @@ class ProtectedLayout extends React.Component {
                                     <Grid item>
                                         <StyledButtonLink to={prefix}>
                                             <Typography variant="h6" color="inherit">
-                                                Geocloud Dashboard
+                                                GeoFA Editor
                                             </Typography>
                                         </StyledButtonLink>
                                     </Grid>
@@ -77,7 +77,7 @@ class ProtectedLayout extends React.Component {
                                         </div>
                                         <div style={{display: `inline-block`}}>
                                             <Button color="inherit" onClick={this.props.onSignOut}>
-                                                Sign ou
+                                                Log ud
                                             </Button>
                                         </div>
                                     </Grid>

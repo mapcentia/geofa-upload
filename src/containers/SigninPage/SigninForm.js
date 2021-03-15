@@ -80,7 +80,7 @@ class SigninForm extends React.Component {
                         name="username"
                         autoFocus
                         required
-                        label="Username or email"
+                        label="Brugername"
                         disabled={this.props.disabled}
                         value={this.state.user}
                         onChange={(event) => {
@@ -94,7 +94,7 @@ class SigninForm extends React.Component {
 
                 {step === STEP_PASSWORD ? (<div>
                     {this.props.databases.length === 0 ? (<div>
-                        No databases found for the specified user
+                        Bruger ikke fundet
                     </div>) : false}
                     {this.props.databases.length > 1 ? (<div>
                         {databaseSelector}
@@ -119,7 +119,7 @@ class SigninForm extends React.Component {
                 variant="contained"
                 disabled={this.props.disabled || this.state.user.length < MIN_LENGTH}
                 color="primary">
-                Enter password
+                Skriv password
             </Button>) : (<Button
                 type="submit"
                 onClick={() => { this.props.onSubmit({
@@ -130,7 +130,7 @@ class SigninForm extends React.Component {
                 fullWidth
                 variant="contained"
                 disabled={!readyToSubmit} color="primary">
-                Sign in
+                Log ind
             </Button>)}
         </form>);
     }

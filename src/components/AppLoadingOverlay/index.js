@@ -30,7 +30,7 @@ const AppLoadingOverlay = (props) => {
             <CircularProgress/>
             <TextWrapper>
                 <Typography variant="subtitle1" gutterBottom>
-                    sdd
+                    Godkender
                 </Typography>
             </TextWrapper>
         </InnerWrapper>
