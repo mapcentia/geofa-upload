@@ -25,13 +25,15 @@ import {makeSelectIsAuthenticating, makeSelectIsAuthenticated, makeSelectUser} f
 
 import MainContentWrapper from '../../components/MainContentWrapper';
 
+import config from './../../config'
+
 class ProtectedLayout extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        let prefix = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
+        let prefix = config.homepage;
         const {children} = this.props;
         if (this.props.isAuthenticating === false) {
             if (this.props.isAuthenticated) {

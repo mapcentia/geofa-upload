@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import config from './../../config'
 
 const LogoWrapper = styled.div`
   max-height: 200px;
@@ -12,7 +13,7 @@ const LogoWrapper = styled.div`
 
 const wrapper = (props) => {
     const {children} = props;
-    let prefix = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
+    let prefix = config.homepage;
     return (<Card style={{maxWidth: `400px`}}>
         <CardContent>
             <LogoWrapper>

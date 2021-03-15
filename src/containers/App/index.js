@@ -19,6 +19,8 @@ import ProtectedLayoutRoute from '../ProtectedLayoutRoute';
 import { makeSelectGC2Configuration, makeSelectGC2ConfigurationLoading } from './selectors';
 import saga from './saga';
 
+import config from './../../config'
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -29,7 +31,7 @@ class App extends React.Component {
     }
 
     render() {
-        let appBaseURL = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
+        let appBaseURL = config.homepage;
         return (<div>
             {this.props.gc2ConfigurationsLoading && this.props.gc2Configurations === false ? (<AppLoadingOverlay messageId="loadingConfiguration"/>) : (
                 <div>

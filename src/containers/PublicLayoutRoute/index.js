@@ -10,6 +10,8 @@ import { makeSelectIsAuthenticating, makeSelectIsAuthenticated } from '../App/se
 
 import AppLoadingOverlay from '../../components/AppLoadingOverlay';
 
+import config from './../../config'
+
 const REDIRECT_IF_AUTHENTICATED_ROUTES = [`/sign-in`, `/sign-up`];
 
 class PublicLayout extends React.Component {
@@ -19,7 +21,7 @@ class PublicLayout extends React.Component {
 
     render() {
         const { children } = this.props;
-        let appBaseURL = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
+        let appBaseURL = config.homepage;
         const renderRegular = () => {
             return (
                 <Grid container direction="row" justify="center" alignItems="center">

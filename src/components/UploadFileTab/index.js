@@ -77,7 +77,7 @@ class UploadFileTab extends React.Component {
     }
 
     render() {
-        let appBaseURL = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
+        let appBaseURL = config.homepage;
         let menuItems = [];
         if (this.props.subusers) {
             this.props.subusers.map((item, index) => {

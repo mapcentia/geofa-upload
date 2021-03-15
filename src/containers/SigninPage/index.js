@@ -20,7 +20,6 @@ class Login extends React.Component {
     }
 
     render() {
-        let prefix = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
         return (
             <PublicFormsWrapper>
                 <SigninForm

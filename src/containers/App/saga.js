@@ -29,7 +29,9 @@ import {
     getGC2ConfigurationCall, processCall
 } from '../../api';
 
-const appBaseURL = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
+import config from './../../config'
+
+const appBaseURL = config.homepage;
 
 export function* checkAuthorizationGenerator() {
     try {

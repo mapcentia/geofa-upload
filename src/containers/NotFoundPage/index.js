@@ -4,10 +4,10 @@ import StyledLink from '../../components/StyledLink';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const translationPrefix = `containers.NotFoundPage`;
+import config from './../../config'
 
 export default function NotFound() {
-    let appBaseURL = (process.env.WEBPACK_PUBLIC_PATH ? process.env.WEBPACK_PUBLIC_PATH : `/`);
+    let appBaseURL = config.homepage;
     return (<div>
         <Typography variant="h3" gutterBottom>
            Not found
