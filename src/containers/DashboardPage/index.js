@@ -17,9 +17,11 @@ import reducer from './reducer';
 import saga from './saga';
 
 import UploadFileTab from "../../components/UploadFileTab";
+import ConnectImageTab from "../../components/ConnectImageTab";
+import GetDataTab from "../../components/GetDataTab";
 
 import {makeSelectProcessing, makeSelectProcessingError} from '../App/selectors';
-import {processRequest} from "../App/actions";
+import {processRequest, processReset} from "../App/actions";
 
 export class DashboardPage extends React.Component {
 
@@ -64,16 +66,14 @@ export class DashboardPage extends React.Component {
                 <div style={{paddingTop: `16px`, paddingLeft: `4px`, paddingRight: `4px`}}>
                     <UploadFileTab
                         onProcess={(data) => { this.props.dispatch(processRequest(data)); }}
+                        onReset={() => { this.props.dispatch(processReset()); }}
                     />
                 </div>
                 <div style={{paddingTop: `16px`, paddingLeft: `4px`, paddingRight: `4px`}}>
-                    <h1>TEST2</h1>
+                    <ConnectImageTab/>
                 </div>
                 <div style={{paddingTop: `16px`, paddingLeft: `4px`, paddingRight: `4px`}}>
-                    <h1>TEST2</h1>
-                </div>
-                <div style={{paddingTop: `16px`, paddingLeft: `4px`, paddingRight: `4px`}}>
-                    <h1>TEST2</h1>
+                    <GetDataTab/>
                 </div>
             </SwipeableViews>
         </Grid>);

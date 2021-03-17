@@ -6,6 +6,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from "@material-ui/core/TextareaAutosize"
+import Checkbox from "@material-ui/core/Checkbox"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Uppy from '@uppy/core'
 import XHRUpload from '@uppy/xhr-upload'
 import {Dashboard} from '@uppy/react'
@@ -13,7 +15,6 @@ import '@uppy/core/dist/style.css'
 import '@uppy/dashboard/dist/style.css'
 import Danish from '@uppy/locales/lib/da_DK'
 import StyledButtonLink from '../StyledButtonLink';
-import UploadResultLog from "./UploadResultLog";
 import config from './../../config';
 import {createStructuredSelector} from "reselect";
 import {makeSelectUploadResult} from "../../containers/App/selectors";
@@ -67,56 +68,59 @@ uppy.on('files-added', (files) => {
 class UploadFileTab extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: ""}
+        this.state = {delete: false}
     }
 
     componentWillMount() {
         uppy.on('complete', (result) => {
             fileArr.forEach(fileName => {
-                this.props.onProcess({fileName: fileName});
+                this.props.onProcess({fileName: fileName, delete: this.state.delete});
             })
             fileArr = [];
         })
 
     }
 
+    handleChangeDelete = (event) => {
+        this.setState({delete: event.target.checked});
+    };
+
     render() {
-        let appBaseURL = config.homepage;
-        let menuItems = [];
-        if (this.props.subusers) {
-            this.props.subusers.map((item, index) => {
-                if (this.state.screenName !== item.screenName) {
-                    menuItems.push(<MenuItem key={`option_${index}`}
-                                             value={item.screenName}>{item.screenName}</MenuItem>);
-                }
-            });
-        }
-        let overlayContent = false;
-        let overlay = false;
-        if (overlayContent) {
-            overlay = (<OverlayContainer>
-                <OverlayInner>
-                    {overlayContent}
-                    <StyledButtonLink to={appBaseURL}>
-                        <Button variant="contained" color="primary">
-                            text
-                        </Button>
-                    </StyledButtonLink>
-                </OverlayInner>
-            </OverlayContainer>);
-        }
-
-
         return (<div style={{position: `relative`}}>
-            {overlay}
             <Grid container spacing={24}>
                 <Grid item md={12}>
                     <Typography variant="h6" color="inherit">
                         Upload GIS- og billedfiler
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
-                        en anden tekst
+                        <p>Det er her muligt at uploade data og billeder.</p>
+                        <p>Skal du i gang med et nyt tema, kan du kan hente skabelon-filer her.</p>
+                        <p>Værd opmærksom på:</p>
+                        <ul>
+                            <li>At hvis feltet objekt_id er tomt, vil det blive betragtet som et nyt objekt.</li>
+                            <li>At hvis feltet objekt_id er udfyldt, vil objektet bleve betragtet som et
+                                eksisterende objekt og blive ajourført i såfald objekt_id'et allerede findes i databasen
+                                - ellers sker der ikke noget.
+                            </li>
+                            <li>At sættes der flueben i "Slet ikke påvirkede objekter", så bliver eksisterende
+                                objekter, som ikke opdateres slettet (pas på, og overvej
+                                at hente backup af de data, som er i databasen under fanen "Hent
+                                data").
+                            </li>
+                        </ul>
+                        <p>Under Upload området kan loggen ses for uploadede filer. Her vil evt. fejl også blive vist</p>
                     </Typography>
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={this.state.delete}
+                                onChange={this.handleChangeDelete}
+                                name="delete"
+                                color="primary"
+                            />
+                        }
+                        label="Slet ikke påvirkede objekter"
+                    />
                     <div>
                         <Dashboard
                             uppy={uppy}
@@ -124,14 +128,19 @@ class UploadFileTab extends React.Component {
                             proudlyDisplayPoweredByUppy={false}
                         />
                     </div>
-                    <div><TextareaAutosize  defaultValue="Her bliver resultatet af seneste upload vist"
-                                           value={this.props.processRequestSuccess} style={{width: '100%', marginTop: "20px"}}/>
+                    <Button onClick={() => {
+                        this.props.onReset();
+                    }}>Nulstil log</Button>
+                    <div><TextareaAutosize defaultValue="Her bliver resultatet af seneste upload vist"
+                                           value={this.props.processRequestSuccess}
+                                           style={{width: '100%', marginTop: "20px"}}/>
                     </div>
                 </Grid>
             </Grid>
         </div>);
     }
 }
+
 const mapStateToProps = createStructuredSelector({
     processRequestSuccess: makeSelectUploadResult(),
 });

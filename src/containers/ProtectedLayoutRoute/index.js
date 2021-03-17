@@ -49,11 +49,11 @@ class ProtectedLayout extends React.Component {
                     </Button>
                 </StyledExternalLink>);
 
-                if (this.props.user.passwordExpired) {
-                    userButton = (<Badge color="secondary" variant="dot">
-                        {userButton}
-                    </Badge>);
-                }
+                // if (this.props.user.passwordExpired) {
+                //     userButton = (<Badge color="secondary" variant="dot">
+                //         {userButton}
+                //     </Badge>);
+                // }
 
                 return (<div>
                     <LoadingOverlay/>

@@ -47,7 +47,8 @@ export function* signInGenerator(credentials) {
         const result = yield call(signInCall, credentials);
         yield put(signInSuccess(result.data.data));
 
-        if (result.data.data.passwordExpired) {
+        if (1 === 2) {
+        //    if (result.data.data.passwordExpired) {
             yield put(push(`${appBaseURL}account`));
         } else {
             yield put(push(appBaseURL));
@@ -116,9 +117,9 @@ export function* getSchemasGenerator(action) {
 
 
 export function* forceUserUpdateGenerator(action) {
-    if (action.payload.passwordExpired) {
-        yield put(push(`${appBaseURL}account`));
-    }
+   // if (action.payload.passwordExpired) {
+   //     yield put(push(`${appBaseURL}account`));
+   // }
 }
 
 export function* getGC2ConfigurationGenerator() {

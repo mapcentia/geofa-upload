@@ -39,7 +39,11 @@ const makeSelectUploadResult = () => createSelector(selectGlobal, globalState =>
             globalState.track = "";
         }
         if (typeof globalState.uploadResult !== "undefined") {
-            globalState.track = globalState.uploadResult + "\n" + globalState.track;
+            if (globalState.uploadResult === '') {
+              globalState.track = '';
+            } else {
+                globalState.track = globalState.uploadResult + "\n" + globalState.track;
+            }
             return globalState.track;
         }
     }
