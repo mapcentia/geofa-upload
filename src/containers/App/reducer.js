@@ -58,8 +58,7 @@ const initialState = fromJS({
 });
 
 function appReducer(state = initialState, action) {
-    console.log(action)
-    let time = new Date().toLocaleString("da-DK");
+    let time = new Date().toLocaleTimeString("da-DK");
     switch (action.type) {
         case GET_GC2_CONFIGURATION_REQUEST:
             return Object.assign({}, state, {
@@ -67,6 +66,7 @@ function appReducer(state = initialState, action) {
                 gc2ConfigurationLoading: true,
             });
         case GET_GC2_CONFIGURATION_SUCCESS:
+            console.log(action.payload)
             return Object.assign({}, state, {
                 gc2Configuration: action.payload,
                 gc2ConfigurationLoading: false,
@@ -211,7 +211,7 @@ function appReducer(state = initialState, action) {
                 processing: true,
                 processingSuccess: false,
                 processError: false,
-                uploadResult: `${time} Indlæser ${action.payload?.fileName}`
+                uploadResult: `${time}    Indlæser ${action.payload?.fileName}`
             });
         case PROCESS_SUCCESS:
             return Object.assign({}, state, {
@@ -219,7 +219,7 @@ function appReducer(state = initialState, action) {
                 processing: false,
                 processingSuccess: true,
                 processingError: false,
-                uploadResult: `${time} ${action.payload?.data?.theme_name}: ${action.payload?.data?.insert_count} indsatte; ${action.payload?.data?.update_count} opdaterede; ${action.payload?.data?.delete_count} slettede`
+                uploadResult: `${time}:   ${action.payload?.data?.insert_count} indsatte; ${action.payload?.data?.update_count} opdaterede; ${action.payload?.data?.delete_count} slettede i ${action.payload?.data?.theme_name}:\n`
             });
         case PROCESS_FAILURE:
             return Object.assign({}, state, {
@@ -227,7 +227,7 @@ function appReducer(state = initialState, action) {
                 processing: false,
                 processingSuccess: false,
                 processingError: true,
-                uploadResult: `${time} Fejl ved indlæsning af ${action.payload.data.file_name}\n                   ${action.payload.data.message}`
+                uploadResult: `${time}:   Fejl ved indlæsning af ${action.payload.data.file_name}\n            ${action.payload.data.message}\n`
             });
         case PROCESS_RESET:
             return Object.assign({}, state, {

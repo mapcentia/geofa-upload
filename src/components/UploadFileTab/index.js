@@ -18,6 +18,8 @@ import StyledButtonLink from '../StyledButtonLink';
 import config from './../../config';
 import {createStructuredSelector} from "reselect";
 import {makeSelectUploadResult} from "../../containers/App/selectors";
+import Alert from "@material-ui/lab/Alert";
+import MainContentWrapper from "../MainContentWrapper";
 // import SnackbarContent from 'components/SnackbarContent';
 
 const TextFieldWrapper = styled.div`
@@ -93,22 +95,23 @@ class UploadFileTab extends React.Component {
                         Upload GIS- og billedfiler
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
-                        <p>Det er her muligt at uploade data og billeder.</p>
+                        <p>Det er her muligt at uploade GIS- og billedfiler.</p>
                         <p>Skal du i gang med et nyt tema, kan du kan hente skabelon-filer her.</p>
                         <p>Værd opmærksom på:</p>
                         <ul>
-                            <li>At hvis feltet objekt_id er tomt, vil det blive betragtet som et nyt objekt.</li>
-                            <li>At hvis feltet objekt_id er udfyldt, vil objektet bleve betragtet som et
-                                eksisterende objekt og blive ajourført i såfald objekt_id'et allerede findes i databasen
-                                - ellers sker der ikke noget.
+                            <li>At hvis feltet objekt_id er tomt, så vil det blive betragtet som et nyt objekt og
+                                indlæst.
                             </li>
-                            <li>At sættes der flueben i "Slet ikke påvirkede objekter", så bliver eksisterende
-                                objekter, som ikke opdateres slettet (pas på, og overvej
-                                at hente backup af de data, som er i databasen under fanen "Hent
-                                data").
+                            <li>At hvis feltet objekt_id er udfyldt, så vil objektet blive betragtet som et eksisterende
+                                objekt og blive ajourført (hvis objekt_id ikke findes i databasen, vil objektet ikke
+                                blive indlæst).
+                            </li>
+                            <li>At sættes der flueben i "Slet objekter som ikke er i lokale data", så bliver
+                                eksisterende objekter med objekt_id'er, der ikke er i de lokale data, slettet (pas på,
+                                og overvej at hente backup af de data, som er i databasen under fanen "Hent data").
                             </li>
                         </ul>
-                        <p>Under Upload området kan loggen ses for uploadede filer. Her vil evt. fejl også blive vist</p>
+                        <p>Nederst kan loggen ses for uploadede filer. Her vil evt. fejl også blive vist.</p>
                     </Typography>
                     <FormControlLabel
                         control={
@@ -119,8 +122,9 @@ class UploadFileTab extends React.Component {
                                 color="primary"
                             />
                         }
-                        label="Slet ikke påvirkede objekter"
+                        label="Slet objekter som ikke er i lokale data"
                     />
+                    <Alert style={{marginBottom: "10px"}} severity="warning">Ved sletning, så pas på, og overvej at hente backup af de data, som er i databasen under fanen "Hent data"</Alert>
                     <div>
                         <Dashboard
                             uppy={uppy}

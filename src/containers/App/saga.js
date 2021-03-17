@@ -127,17 +127,9 @@ export function* getGC2ConfigurationGenerator() {
     try {
         yield put(getGC2ConfigurationSuccess(response.data));
         yield put(checkAuthorizationRequest({}));
-        if (response.data && response.data.gc2Al) {
-            if (response.data.gc2Al.indexOf(`da_`) === 0) {
-                yield put(`da`);
-            } else if (response.data.gc2Al.indexOf(`en_`) === 0) {
-                yield put(`en`);
-            }
-        }
     } catch (err) {
         yield put(getGC2ConfigurationSuccess({}));
         yield put(checkAuthorizationRequest({}));
-
     }
 }
 

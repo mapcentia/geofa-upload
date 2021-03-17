@@ -7,9 +7,9 @@ import {withRouter} from "react-router";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import AppBar from '@material-ui/core/AppBar';
-import Badge from '@material-ui/core/Badge';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Alert from '@material-ui/lab/Alert';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -86,6 +86,7 @@ class ProtectedLayout extends React.Component {
                         </AppBar>
                     </div>
                     <MainContentWrapper>
+                        <Alert style={{marginBottom: "10px"}} variant="filled" severity="info">Dette er en test udgave. Ved brug ændres der IKKE i produktionsdata.</Alert>
                         <Card>
                             <CardContent>
                                 {children}
