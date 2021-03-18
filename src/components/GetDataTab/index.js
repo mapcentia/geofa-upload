@@ -41,8 +41,8 @@ class GetDataTab extends React.Component {
                         WFS og WFS-T
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
-                        <p>WFS 2.0: {config.apiUrl}ows/fkg/fkg</p>
-                        <p>WFS-t 1.1: {config.apiUrl}wfs/{this.props.user.screenName}@fkg/fkg/25832</p>
+                        <p>WFS 2.0: {config.apiUrl}ows/fkg_test/fkg</p>
+                        <p>WFS-t 1.1: {config.apiUrl}wfs/{this.props.user.screenName}@fkg_test/fkg/25832</p>
                     </Typography>
                     <Typography variant="h6" color="inherit">
                         Download af datafiler
