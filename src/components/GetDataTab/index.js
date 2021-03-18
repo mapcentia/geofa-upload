@@ -30,7 +30,7 @@ class GetDataTab extends React.Component {
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
                         <p>Her kan du se og (og senere editere) enkelt-objekter i webkort-løsning.</p>
-                        <StyledExternalLink href={`${this.props.gc2Configuration.gc2Options.vidiUrl}/app/fkg/fkg`} target="_blank" style={{marginRight: `10px`}}>
+                        <StyledExternalLink href={`${this.props.gc2Configuration.gc2Options.vidiUrl}/app/fkg_test/?config=/api/v2/configuration/fkg_test/configuration_fkg_udgivet_5f465f5d3181f687353260.json`} target="_blank" style={{marginRight: `10px`}}>
                             <Button color="primary" variant="contained" size="small">
                                 <LaunchIcon/> Start kortet
                             </Button>
