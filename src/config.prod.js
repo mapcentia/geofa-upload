@@ -1,5 +1,5 @@
 const config = {
-    apiUrl: `https://geofa-test.admin.gc2.io/`,
+    apiUrl: `https://geofa.geodanmark.dk/`,
     homepage: `/editor/`
 };
 
