@@ -53,7 +53,7 @@ export class DashboardPage extends React.Component {
                     onChange={this.handleChangeActiveTab}
                     indicatorColor="primary"
                     textColor="primary">
-                    <Tab label="Upload"/>
+                    <Tab label="Indlæs og ajourfør data"/>
                     <Tab label="Tilknyt billeder"/>
                     <Tab label="Hent data"/>
                 </Tabs>

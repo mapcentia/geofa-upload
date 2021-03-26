@@ -80,7 +80,7 @@ class SigninForm extends React.Component {
                         name="username"
                         autoFocus
                         required
-                        label="Brugername"
+                        label="Brugernavn"
                         disabled={this.props.disabled}
                         value={this.state.user}
                         onChange={(event) => {
@@ -106,7 +106,7 @@ class SigninForm extends React.Component {
                             name="password"
                             type="password"
                             required
-                            label="Password"
+                            label="Adgangskode"
                             disabled={this.props.disabled}
                             value={this.state.password} onChange={(event) => { this.setState({ password: event.target.value }) }}/>
                     </FormControl>) : false}
@@ -119,7 +119,7 @@ class SigninForm extends React.Component {
                 variant="contained"
                 disabled={this.props.disabled || this.state.user.length < MIN_LENGTH}
                 color="primary">
-                Skriv password
+                Skriv adgangskode
             </Button>) : (<Button
                 type="submit"
                 onClick={() => { this.props.onSubmit({

@@ -86,7 +86,9 @@ class ProtectedLayout extends React.Component {
                         </AppBar>
                     </div>
                     <MainContentWrapper>
-                        <Alert style={{marginBottom: "10px"}} variant="filled" severity="info">Dette er en test-version. Ved brug ændres der IKKE i produktionsdata.</Alert>
+                        <Alert style={{marginBottom: "10px"}} severity="warning">
+                            Du er i testmiljøet, så testdatabasen anvendes ifm. indlæsning, ajourføring, visning, mv.
+                        </Alert>
                         <Card>
                             <CardContent>
                                 {children}
