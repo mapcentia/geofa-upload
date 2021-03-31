@@ -219,7 +219,7 @@ function appReducer(state = initialState, action) {
                 processing: false,
                 processingSuccess: true,
                 processingError: false,
-                uploadResult: `${time}:   ${action.payload?.data?.insert_count} indsatte; ${action.payload?.data?.update_count} opdaterede; ${action.payload?.data?.delete_count} slettede i ${action.payload?.data?.theme_name}:\n`
+                uploadResult: `${time}:   ${action.payload?.data?.insert_count} indsatte; ${action.payload?.data?.update_count} opdaterede; ${action.payload?.data?.delete_count} slettede; ${action.payload?.data?.skip_count} skippede i ${action.payload?.data?.theme_name}:\n`
             });
         case PROCESS_FAILURE:
             return Object.assign({}, state, {
