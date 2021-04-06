@@ -49,6 +49,10 @@ class ProtectedLayout extends React.Component {
                     </Button>
                 </StyledExternalLink>);
 
+                let testAlert = (<Alert style={{marginBottom: "10px"}} severity="warning">
+                    Du er i testmiljøet, så testdatabasen anvendes ifm. indlæsning, ajourføring, visning, mv.
+                </Alert>);
+
                 // if (this.props.user.passwordExpired) {
                 //     userButton = (<Badge color="secondary" variant="dot">
                 //         {userButton}
@@ -86,9 +90,7 @@ class ProtectedLayout extends React.Component {
                         </AppBar>
                     </div>
                     <MainContentWrapper>
-                        <Alert style={{marginBottom: "10px"}} severity="warning">
-                            Du er i testmiljøet, så testdatabasen anvendes ifm. indlæsning, ajourføring, visning, mv.
-                        </Alert>
+                        {!config.prod ? testAlert : ""}
                         <Card>
                             <CardContent>
                                 {children}
