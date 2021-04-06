@@ -92,7 +92,7 @@ class UploadFileTab extends React.Component {
             <Grid container spacing={24}>
                 <Grid item md={12}>
                     <Typography variant="h6" color="inherit">
-                        Upload GIS- og billedfiler
+                        Indlæs og ajourfør data
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
                         <p>Det er her muligt at uploade GIS- og billedfiler.</p>

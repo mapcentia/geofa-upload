@@ -36,7 +36,7 @@ class Login extends React.Component {
                 {this.props.signingInError ? (
                     <ErrorWrapper>
                         <Typography variant="body1" gutterBottom color="error">
-                            Invalid username or password
+                            Forkert brugernavn<br/>eller adgangskode
                         </Typography>
                     </ErrorWrapper>
                 ) : false}
