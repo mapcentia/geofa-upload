@@ -211,7 +211,7 @@ function appReducer(state = initialState, action) {
                 processing: true,
                 processingSuccess: false,
                 processError: false,
-                uploadResult: `${time}    Indlæser ${action.payload?.fileName}`
+                uploadResult: `${time}:   Indlæser ${action.payload?.fileName}`
             });
         case PROCESS_SUCCESS:
             return Object.assign({}, state, {
