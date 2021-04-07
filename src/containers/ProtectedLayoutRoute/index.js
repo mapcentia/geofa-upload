@@ -43,7 +43,7 @@ class ProtectedLayout extends React.Component {
                     </Button>
                 </StyledButtonLink>);
 
-                let helpButton = (<StyledExternalLink href={"https://mapcentia.screenstepslive.com/s"} target="_blank">
+                let helpButton = (<StyledExternalLink href={"https://www.geodanmark.dk/home/vejledninger/geofa/vejledninger-til-geofa/"} target="_blank">
                     <Button color="inherit">
                         <HelpIcon style={{marginRight: `6px`}}/>
                     </Button>
