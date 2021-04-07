@@ -106,9 +106,9 @@ class UploadFileTab extends React.Component {
                                 objekt og blive ajourført (hvis objekt_id ikke findes i databasen, vil objektet ikke
                                 blive indlæst).
                             </li>
-                            <li>At sættes der flueben i "Slet objekter som ikke er i lokale data", så bliver
-                                eksisterende objekter med objekt_id'er, der ikke er i de lokale data, slettet (pas på,
-                                og overvej at hente backup af de data, som er i databasen under fanen "Hent data").
+                            <li>At sættes der flueben i "Slet objekter som ikke er i uploadede data", så bliver
+                                eksisterende objekter med objekt_id'er, der ikke er i de uploadede data, slettet (pas
+                                på, og overvej at hente backup af de data, som er i databasen under fanen "Hent data")
                             </li>
                         </ul>
                         <p>Nederst kan loggen ses for uploadede filer. Her vil evt. fejl også blive vist.</p>
@@ -122,9 +122,10 @@ class UploadFileTab extends React.Component {
                                 color="primary"
                             />
                         }
-                        label="Slet objekter som ikke er i lokale data"
+                        label="Slet objekter som ikke er i uploadede data"
                     />
-                    <Alert style={{marginBottom: "10px"}} severity="warning">Ved sletning, så pas på, og overvej at hente backup af de data, som er i databasen under fanen "Hent data"</Alert>
+                    <Alert style={{marginBottom: "10px"}} severity="warning">Ved sletning, så pas på, og overvej at
+                        hente backup af de data, som er i databasen under fanen "Hent data"</Alert>
                     <div>
                         <Dashboard
                             uppy={uppy}
