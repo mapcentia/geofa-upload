@@ -96,7 +96,7 @@ class UploadFileTab extends React.Component {
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
                         <p>Det er her muligt at uploade GIS- og billedfiler.</p>
-                        <p>Skal du i gang med et nyt tema, kan du kan hente skabelon-filer her.</p>
+                        <p>Skal du i gang med et nyt tema, kan du kan hente skabelon-filer her. [Kommer snart]</p>
                         <p>Værd opmærksom på:</p>
                         <ul>
                             <li>At hvis feltet objekt_id er tomt, så vil det blive betragtet som et nyt objekt og
