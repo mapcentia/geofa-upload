@@ -68,7 +68,7 @@ class ProtectedLayout extends React.Component {
                                     <Grid item>
                                         <StyledButtonLink to={prefix}>
                                             <Typography variant="h6" color="inherit">
-                                                GeoFA Editor
+                                                GeoFA-editor
                                             </Typography>
                                         </StyledButtonLink>
                                     </Grid>

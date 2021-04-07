@@ -20,7 +20,7 @@ const wrapper = (props) => {
                 <img src={prefix + "GeoDanmark-logo-pos.png"} style={{maxWidth: `150px`, height: `auto`}}/>
             </LogoWrapper>
             <Typography variant="h5" gutterBottom>
-                GeoFA Editor
+                GeoFA-editor
             </Typography>
             <div>
                 {children}
