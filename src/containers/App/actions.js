@@ -13,21 +13,20 @@ import {
 const cookies = new Cookies();
 
 const normalizeUser = (userData) => {
-    if (!userData.email || !userData.screen_name ||
-        `passwordExpired` in userData === false || `subuser` in userData === false) {
+    if (!userData.email || !userData.screen_name || !(`passwordExpired` in userData) || !(`subuser` in userData)) {
         console.error(`User data is invalid`, userData);
         throw new Error(`Unexpected format of the user data`);
     }
 
-    let data = {
+    return {
         email: userData.email,
         passwordExpired: userData.passwordExpired,
         screenName: userData.screen_name,
         parentDb: userData.parentdb,
         subuser: userData.subuser,
+        properties: userData.properties
     };
 
-    return data;
 }
 
 // Update user

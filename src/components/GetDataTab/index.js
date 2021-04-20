@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button';
 import LaunchIcon from '@material-ui/icons/Launch';
 import StyledExternalLink from './../../components/StyledExternalLink';
+import GetData from "./GetData";
 import {createStructuredSelector} from "reselect";
 import {connect} from "react-redux";
 import {makeSelectUser, makeSelectGC2Configuration} from "../../containers/App/selectors";
@@ -49,7 +50,8 @@ class GetDataTab extends React.Component {
                         Download af datafiler
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
-                        <p>Her kan du downloade data. [Kommer snart]</p>
+                        <p>Her kan du downloade data.</p>
+                        <GetData/>
                     </Typography>
 
                 </Grid>
