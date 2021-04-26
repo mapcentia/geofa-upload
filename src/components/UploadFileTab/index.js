@@ -45,7 +45,7 @@ const uppy = new Uppy({
     locale: Danish
 });
 
-let ext = ["shp", "tab", "geojson", "gml", "kml", "kmz", "mif", "zip", "rar", "dwg", "dgn", "dxf", "csv", "mdb", "accdb", "gpkg"]
+let ext = ["shp", "tab", "geojson", "gml", "kml", "kmz", "mif", "zip", "rar", "dwg", "dgn", "dxf", "csv", "mdb", "accdb", "gpkg", "png", "jpg", "jpeg"]
 
 let fileArr = [];
 
@@ -92,7 +92,7 @@ class UploadFileTab extends React.Component {
             <Grid container spacing={24}>
                 <Grid item md={12}>
                     <Typography variant="h6" color="inherit">
-                        Indlæs og ajourfør data
+                        Indlæs og ajourfør data og billeder
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
                         <p>Det er her muligt at uploade GIS- og billedfiler.</p>

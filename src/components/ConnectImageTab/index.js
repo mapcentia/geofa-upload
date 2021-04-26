@@ -18,6 +18,7 @@ class ConnectImageTab extends React.Component {
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
                        <p>Her bliver det muligt at tilknytte uploadede billeder til objekter.</p>
                     </Typography>
+                    <div><img src={'https://i.imgur.com/3x3smno.png'}/></div>
                 </Grid>
             </Grid>
         </div>);
