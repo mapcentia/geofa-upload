@@ -1,0 +1,138 @@
+<html>
+<head>
+    <script src="https://geofa.geodanmark.dk/js/jquery/1.10.0/jquery.min.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const facilitetId = urlParams.get('objekt_id');
+        const functions = {
+            getDetached: () => {
+                $.ajax({
+                    url: '/extensions/fkgupload/api/process/7901/' + facilitetId,
+                    dataType: 'json',
+                    success: function (data) {
+                        let deteched = $("#detached");
+                        deteched.empty();
+                        if (data?.data) {
+                            data.data.forEach((e) => {
+                                let id = `attach_${e}`
+                                let img = `<div>
+                                <img src="https://mapcentia-www.s3-eu-west-1.amazonaws.com/fkg/171/${e}.jpg">
+                                <button id="${id}">Tilknyt</button>
+                               </div>`;
+                                deteched.append(img)
+                                $(`#${id}`).on("click", () => {
+                                    functions.attach(e)
+                                })
+                            })
+                        }
+                    }
+                })
+            },
+            getAttached: () => {
+                $.ajax({
+                    url: '/extensions/fkgupload/api/process/7900/' + facilitetId,
+                    dataType: 'json',
+                    success: (data) => {
+                        let attached = $("#attached");
+                        attached.empty();
+                        if (data?.data) {
+                            data.data.forEach((o) => {
+                                let e = o[0];
+                                let isPri = o[1];
+                                let forbindelsesId = o[2];
+                                let id = `detach_${e}`
+                                let idp = `primary_${e}`
+                                let img = `<div>
+                                <img src="https://mapcentia-www.s3-eu-west-1.amazonaws.com/fkg/171/${e}.jpg">
+                                <button id="${id}">Slet tilknyt</button>
+                                <button id="${idp}">${isPri} Set som primær</button>
+                               </div>`;
+                                attached.append(img)
+                                $(`#${id}`).on("click", () => {
+                                    functions.detach(e)
+                                })
+                                $(`#${idp}`).on("click", () => {
+                                    functions.setPrimary(forbindelsesId)
+                                })
+                            })
+                        }
+                    },
+                    error: () => {
+                        alert();
+                    }
+                })
+            },
+            attach: (photo) => {
+                $.ajax({
+                    url: '/extensions/fkgupload/api/process/7900',
+                    dataType: 'json',
+                    method: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    scriptCharset: "utf-8",
+                    data: JSON.stringify({
+                        "tema": "t_5800_fac_pkt",
+                        "foto_objek": photo,
+                        "foto_lokat": facilitetId
+                    }),
+                    success: function () {
+                        functions.update();
+                    },
+                    error: () => {
+                        alert();
+                    }
+
+                })
+
+            },
+            detach: (photo) => {
+                $.ajax({
+                    url: '/extensions/fkgupload/api/process/7900/' + photo,
+                    dataType: 'json',
+                    method: 'DELETE',
+                    contentType: "application/json; charset=utf-8",
+                    scriptCharset: "utf-8",
+                    success: function () {
+                        functions.update();
+                    },
+                    error: () => {
+                        alert();
+                    }
+                })
+
+            },
+            setPrimary: (forbindelsesId) => {
+                $.ajax({
+                    url: '/extensions/fkgupload/api/process/7900/',
+                    dataType: 'json',
+                    method: 'PUT',
+                    contentType: "application/json; charset=utf-8",
+                    scriptCharset: "utf-8",
+                    data: JSON.stringify({
+                        "objekt_id": forbindelsesId,
+                        "foto_lokat": facilitetId
+                    }),
+                    success: function () {
+                        functions.update();
+                    },
+                    error: () => {
+                        alert();
+                    }
+                })
+
+            },
+            update: () => {
+                functions.getAttached();
+                functions.getDetached();
+            }
+        }
+        functions.update();
+
+    </script>
+</head>
+<body>
+<h2>Ikke tilknyttede</h2>
+<div id="detached"></div>
+<h2>Tilknyttede</h2>
+<div id="attached"></div>
+</body>
+</html>
