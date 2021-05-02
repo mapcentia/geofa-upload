@@ -3,6 +3,8 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import {createStructuredSelector} from "reselect";
 import {connect} from "react-redux";
+import config from "../../config";
+import {makeSelectGC2Configuration, makeSelectUser} from "../../containers/App/selectors";
 
 class ConnectImageTab extends React.Component {
     constructor(props) {
@@ -16,9 +18,9 @@ class ConnectImageTab extends React.Component {
                        Tilknyt billeder
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
-                       <p>Her bliver det muligt at tilknytte uploadede billeder til objekter.</p>
+                       <p>Her kan du tilknytte billeder til GeoFA objekter. Start med at tænde laget, som du vil tilknyte billeder til. Derefter klik på et objekt og tilknyt billeder.</p>
                     </Typography>
-                    <div><img style={{width: '100%'}} src={'https://i.imgur.com/3x3smno.png'}/></div>
+                    <div><iframe style={{width: '100%', height: '600px'}} src={'https://geofa-kort-test.geodanmark.dk/app/fkg/?config=/api/v2/configuration/fkg/configuration_tilknyt_billeder_608bd5048bfef734424106.json'}></iframe></div>
                 </Grid>
             </Grid>
         </div>);
@@ -26,6 +28,8 @@ class ConnectImageTab extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
+    user: makeSelectUser(),
+    gc2Configuration: makeSelectGC2Configuration(),
 });
 
 export default connect(mapStateToProps)(ConnectImageTab);
