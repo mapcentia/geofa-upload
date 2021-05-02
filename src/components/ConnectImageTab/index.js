@@ -20,7 +20,7 @@ class ConnectImageTab extends React.Component {
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
                        <p>Her kan du tilknytte billeder til GeoFA objekter. Start med at tænde laget, som du vil tilknyte billeder til. Derefter klik på et objekt og tilknyt billeder.</p>
                     </Typography>
-                    <div><iframe style={{width: '100%', height: '600px'}} src={'https://geofa-kort-test.geodanmark.dk/app/fkg/?config=/api/v2/configuration/fkg/configuration_tilknyt_billeder_608bd5048bfef734424106.json'}></iframe></div>
+                    <div><iframe allowfullscreen style={{width: '100%', height: '600px'}} src={'https://geofa-kort-test.geodanmark.dk/app/fkg/?config=/api/v2/configuration/fkg/configuration_tilknyt_billeder_608bd5048bfef734424106.json'}></iframe></div>
                 </Grid>
             </Grid>
         </div>);
