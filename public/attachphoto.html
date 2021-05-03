@@ -70,7 +70,7 @@
                                            </div></div>`;
                                 attached.append(img)
                                 $(`#${id}`).on("click", () => {
-                                    functions.detach(e)
+                                    functions.detach(forbindelsesId)
                                 })
                                 $(`#${idp}`).on("click", () => {
                                     functions.setPrimary(forbindelsesId)
@@ -105,9 +105,9 @@
                 })
 
             },
-            detach: (photo) => {
+            detach: (objekt_id) => {
                 $.ajax({
-                    url: '/extensions/fkgupload/api/process/7900/' + photo,
+                    url: '/extensions/fkgupload/api/process/7900/' + objekt_id,
                     dataType: 'json',
                     method: 'DELETE',
                     contentType: "application/json; charset=utf-8",
