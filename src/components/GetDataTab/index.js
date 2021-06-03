@@ -23,22 +23,21 @@ class GetDataTab extends React.Component {
                         Hent data
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
-                        <p>Her er oplysninger på, hvordan data kan hentes og editeres fra
-                            GeoFA databasen.</p>
+                        <p>Her er oplysninger om, hvordan data kan hentes og editeres i GeoFA-databasen.</p>
                     </Typography>
                     <Typography variant="h6" color="inherit">
-                        Se data
+                        GeoFA-webkortet
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
-                        <p>Her kan du se og (og senere editere) enkelt-objekter i webkort-løsning.</p>
-                        <StyledExternalLink href={`${this.props.gc2Configuration.gc2Options.vidiUrl}${config.vidiUri}`} target="_blank" style={{marginRight: `10px`}}>
+                        <p>GeoFA-webkortet giver dig mulighed for at se og editere data.</p>
+                        <StyledExternalLink href={`${this.props.gc2Configuration.gc2Options.vidiUrl}${config.vidiUri}`}
+                                            target="_blank" style={{marginRight: `10px`}}>
                             <Button color="primary" variant="contained" size="small">
                                 <LaunchIcon/> Start kortet
                             </Button>
                         </StyledExternalLink>
-                        <p>Vejledning</p>
                     </Typography>
-                    <Typography variant="h6" color="inherit">
+                    <Typography variant="h5" color="inherit" style={{"marginTop": "40px"}}>
                         WFS og WFS-T
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
