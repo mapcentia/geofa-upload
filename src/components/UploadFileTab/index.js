@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
-import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from "@material-ui/core/TextareaAutosize"
@@ -14,13 +13,12 @@ import {Dashboard} from '@uppy/react'
 import '@uppy/core/dist/style.css'
 import '@uppy/dashboard/dist/style.css'
 import Danish from '@uppy/locales/lib/da_DK'
-import StyledButtonLink from '../StyledButtonLink';
 import config from './../../config';
 import {createStructuredSelector} from "reselect";
 import {makeSelectUploadResult} from "../../containers/App/selectors";
 import Alert from "@material-ui/lab/Alert";
-import MainContentWrapper from "../MainContentWrapper";
-// import SnackbarContent from 'components/SnackbarContent';
+import TemplateDialog from "../TemplateDialog"
+
 
 const TextFieldWrapper = styled.div`
   padding-bottom: 10px;
@@ -70,7 +68,7 @@ uppy.on('files-added', (files) => {
 class UploadFileTab extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {delete: false}
+        this.state = {delete: false, open: false}
     }
 
     componentWillMount() {
@@ -87,6 +85,15 @@ class UploadFileTab extends React.Component {
         this.setState({delete: event.target.checked});
     };
 
+    handleClickOpen = () => {
+        this.setState({open: true});
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
+    };
+
+
     render() {
         return (<div style={{position: `relative`}}>
             <Grid container spacing={24}>
@@ -96,7 +103,11 @@ class UploadFileTab extends React.Component {
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
                         <p>Det er her muligt at uploade GIS- og billedfiler.</p>
-                        <p>Skal du i gang med et nyt tema, kan du kan hente skabelon-filer her. [Kommer snart]</p>
+                        <p>Skal du i gang med et nyt tema, kan du kan hente skabelon-filer her. Skabelonerne vil indeholde 10 tilfældige objekter fra databasen. Dette gælder dog ikke MapInfo File, som vil værer tom.</p>
+                        <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+                            Hent skabelon filer
+                        </Button>
+                        <TemplateDialog  open={this.state.open} close={this.handleClose} />
                         <p>Værd opmærksom på:</p>
                         <ul>
                             <li>At hvis feltet objekt_id er tomt, så vil det blive betragtet som et nyt objekt og
