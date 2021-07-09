@@ -103,7 +103,7 @@ class UploadFileTab extends React.Component {
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
                         <p>Det er her muligt at uploade GIS- og billedfiler.</p>
-                        <p>Skal du i gang med et nyt tema, kan du kan hente skabelon-filer her. Skabelonerne vil indeholde 10 tilfældige objekter fra databasen. Dette gælder dog ikke MapInfo File, som vil værer tom.</p>
+                        <p>Skal du i gang med et nyt tema, kan du kan hente skabelon-filer her. Skabelonerne vil indeholde 10 tilfældige objekter fra databasen. Dette gælder dog ikke formatet MapInfo File, hvor skabelonerne vil være tomme.</p>
                         <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
                             Hent skabelon filer
                         </Button>
