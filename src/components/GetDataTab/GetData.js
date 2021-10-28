@@ -55,6 +55,10 @@ class GetData extends React.Component {
                     }}
                 >
                     <option aria-label="None" value=""/>
+                    <option value={'t_5710_born_skole_dis'}>t_5710_born_skole_dis</option>
+                    <option value={'t_5712_plej_aeldr_dis'}>t_5712_plej_aeldr_dis</option>
+                    <option value={'t_5713_prog_stat_dis'}>t_5713_prog_stat_dis</option>
+                    <option value={'t_5711_and_dis'}>t_5711_and_dis</option>
                     <option value={'t_5800_fac_pkt'}>t_5800_fac_pkt</option>
                     <option value={'t_5801_fac_fl'}>t_5801_fac_fl</option>
                     <option value={'t_5802_fac_li'}>t_5802_fac_li</option>
