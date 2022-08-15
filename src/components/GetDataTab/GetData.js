@@ -78,6 +78,9 @@ class GetData extends React.Component {
                     <option value={'excel'}>Excel</option>
                     <option value={'csv'}>Csv</option>
                     <option value={'geojson'}>GeoJSON</option>
+                    <option value={'ogr/ESRI Shapefile'}>ESRI Shapefile</option>
+                    <option value={'ogr/GPKG'}>GeoPackage</option>
+                    <option value={'ogr/GML'}>GML</option>
                 </Select>
             </FormControl>
 

@@ -121,6 +121,9 @@ class UploadFileTab extends React.Component {
                                 eksisterende objekter med objekt_id'er, der ikke er i de uploadede data, slettet (pas
                                 på, og overvej at hente backup af de data, som er i databasen under fanen "Hent data")
                             </li>
+                            <li>
+                                At ved upload af billeder, så stilles de til fri afbenyttelse.
+                            </li>
                         </ul>
                         <p>Nederst kan loggen ses for uploadede filer. Her vil evt. fejl også blive vist.</p>
                     </Typography>

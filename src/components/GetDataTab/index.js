@@ -49,7 +49,7 @@ class GetDataTab extends React.Component {
                         Download af datafiler
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
-                        <p>Her kan du downloade data.</p>
+                        <p>Her kan du downloade data. Data bliver hentet som et råt database-dump inklusiv systemfelter. Ønskes skabelon-filer til opbygning/vedligeholdelse af datasæt, så anvend "Hent skabelon filer" under "Indlæs og ajourfør data/billeder"</p>
                         <GetData/>
                     </Typography>
 
