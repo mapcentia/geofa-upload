@@ -36,7 +36,7 @@ class GetData extends React.Component {
     }
 
     getUrl = () => {
-        return `${config.apiUrl}api/v2/sql/${this.props.user.screenName}@fkg?format=${this.state.format}&q=select * from
+        return `${config.apiUrl}api/v2/sql/${this.props.user.screenName}@fkg?srs=25832&format=${this.state.format}&q=select * from
             fkg.${this.state.theme} where
         cvr_kode=${this.props.user.properties?.cvr_kode}`
     }
