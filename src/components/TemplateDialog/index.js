@@ -54,8 +54,7 @@ class TemplateDialog extends React.Component {
                         <option value={'t_5800_fac_pkt'}>t_5800_fac_pkt</option>
                         <option value={'t_5801_fac_fl'}>t_5801_fac_fl</option>
                         <option value={'t_5802_fac_li'}>t_5802_fac_li</option>
-                        <option value={'t_5607_ladepunkter'}>t_5607_ladepunkter</option>
-                        <option value={'t_5608_plan_ladefaciliteter'}>t_5608_plan_ladefaciliteter</option>
+                        <option value={'t_5607_ladefacilitet'}>t_5607_ladefacilitet</option>
                     </Select>
                 </FormControl>
                 <FormControl required variant="filled" style={{marginLeft: '10px'}}>
