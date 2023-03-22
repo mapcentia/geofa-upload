@@ -103,7 +103,7 @@ class UploadFileTab extends React.Component {
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
                         <p>Det er her muligt at uploade GIS- og billedfiler.</p>
-                        <p>Skal du i gang med et nyt tema, kan du kan hente skabelon-filer her. Skabelonerne vil indeholde allerede eksisterende objekter. Dette gælder dog ikke formatet MapInfo File, hvor skabelonerne vil være tomme.</p>
+                        <p>Skal du i gang med et nyt tema, kan du kan hente skabelon-filer her. Skabelonerne vil indeholde allerede eksisterende objekter. Dette gælder dog ikke formatet MapInfo File og ESRI Xml Workspace, hvor skabelonerne vil være tomme. ESRI Xml Workspace indeholder "domains" og kan importeres ind i en ArcGIS geodatabase (GDB).</p>
                         <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
                             Hent skabelon filer
                         </Button>

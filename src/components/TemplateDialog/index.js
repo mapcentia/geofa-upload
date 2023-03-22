@@ -73,6 +73,7 @@ class TemplateDialog extends React.Component {
                         <option value={'GPKG'}>GeoPackage</option>
                         <option value={'GML'}>GML</option>
                         <option value={'geojson'}>GeoJSON</option>
+                        <option value={'ESRI Xml Workspace'}>ESRI Xml Workspace</option>
                     </Select>
                 </FormControl>
                 <DialogActions>
