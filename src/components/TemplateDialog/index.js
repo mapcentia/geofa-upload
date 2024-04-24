@@ -59,6 +59,7 @@ class TemplateDialog extends React.Component {
                         <option value={'t_5609_cykelknudepunktsstraekninger'}>t_5609_cykelknudepunktsstraekninger
                         </option>
                         <option value={'t_5610_cykelplanlaegning'}>t_5610_cykelplanlaegning</option>
+                        <option value={'t_5700_grundej'}>t_5700_grundej</option>
                     </Select>
                 </FormControl>
                 <FormControl required variant="filled" style={{marginLeft: '10px'}}>
