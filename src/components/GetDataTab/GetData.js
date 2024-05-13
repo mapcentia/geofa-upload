@@ -68,6 +68,8 @@ class GetData extends React.Component {
                     <option value={'t_5610_cykelplanlaegning'}>t_5610_cykelplanlaegning</option>
                     <option value={'t_5700_grundej'}>t_5700_grundej</option>
                     <option value={'t_5701_lok_omr'}>t_5701_lok_omr</option>
+                    <option value={'t_5702_skorst_fej'}>t_5702_skorst_fej</option>
+                    <option value={'t_5705_forp_are'}>t_5705_forp_are</option>
                 </Select>
             </FormControl>
             <FormControl required variant="filled" style={{marginLeft: '10px'}}>
