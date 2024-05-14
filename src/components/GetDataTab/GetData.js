@@ -55,7 +55,6 @@ class GetData extends React.Component {
                     }}
                 >
                     <option aria-label="None" value=""/>
-                    <option value={'t_5800_fac_pkt'}>t_5800_fac_pkt</option>
                     <option value={'t_5607_ladefacilitet'}>t_5607_ladefacilitet</option>
                     <option value={'t_5608_cykelknudepunkter'}>t_5608_cykelknudepunkter</option>
                     <option value={'t_5609_cykelknudepunktsstraekninger'}>t_5609_cykelknudepunktsstraekninger</option>
@@ -71,6 +70,9 @@ class GetData extends React.Component {
                     <option value={'t_5712_plej_aeldr_dis'}>t_5712_plej_aeldr_dis</option>
                     <option value={'t_5713_prog_stat_dis'}>t_5713_prog_stat_dis</option>
                     <option value={'t_5715_botilbud'}>t_5715_botilbud</option>
+                    <option value={'t_5716_servicetilbud'}>t_5716_servicetilbud</option>
+                    <option value={'t_5717_hoeringspart'}>t_5717_hoeringspart</option>
+                    <option value={'t_5800_fac_pkt'}>t_5800_fac_pkt</option>
                     <option value={'t_5801_fac_fl'}>t_5801_fac_fl</option>
                     <option value={'t_5802_fac_li'}>t_5802_fac_li</option>
                 </Select>
