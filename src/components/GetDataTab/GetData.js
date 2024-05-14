@@ -55,13 +55,7 @@ class GetData extends React.Component {
                     }}
                 >
                     <option aria-label="None" value=""/>
-                    <option value={'t_5710_born_skole_dis'}>t_5710_born_skole_dis</option>
-                    <option value={'t_5712_plej_aeldr_dis'}>t_5712_plej_aeldr_dis</option>
-                    <option value={'t_5713_prog_stat_dis'}>t_5713_prog_stat_dis</option>
-                    <option value={'t_5711_and_dis'}>t_5711_and_dis</option>
                     <option value={'t_5800_fac_pkt'}>t_5800_fac_pkt</option>
-                    <option value={'t_5801_fac_fl'}>t_5801_fac_fl</option>
-                    <option value={'t_5802_fac_li'}>t_5802_fac_li</option>
                     <option value={'t_5607_ladefacilitet'}>t_5607_ladefacilitet</option>
                     <option value={'t_5608_cykelknudepunkter'}>t_5608_cykelknudepunkter</option>
                     <option value={'t_5609_cykelknudepunktsstraekninger'}>t_5609_cykelknudepunktsstraekninger</option>
@@ -72,6 +66,13 @@ class GetData extends React.Component {
                     <option value={'t_5705_forp_are'}>t_5705_forp_are</option>
                     <option value={'t_5706_havn_are'}>t_5706_havn_are</option>
                     <option value={'t_5707_grunds'}>t_5707_grunds</option>
+                    <option value={'t_5710_born_skole_dis'}>t_5710_born_skole_dis</option>
+                    <option value={'t_5711_and_dis'}>t_5711_and_dis</option>
+                    <option value={'t_5712_plej_aeldr_dis'}>t_5712_plej_aeldr_dis</option>
+                    <option value={'t_5713_prog_stat_dis'}>t_5713_prog_stat_dis</option>
+                    <option value={'t_5715_botilbud'}>t_5715_botilbud</option>
+                    <option value={'t_5801_fac_fl'}>t_5801_fac_fl</option>
+                    <option value={'t_5802_fac_li'}>t_5802_fac_li</option>
                 </Select>
             </FormControl>
             <FormControl required variant="filled" style={{marginLeft: '10px'}}>
