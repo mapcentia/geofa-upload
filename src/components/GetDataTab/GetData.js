@@ -77,6 +77,7 @@ class GetData extends React.Component {
                     <option value={'t_5802_fac_li'}>t_5802_fac_li</option>
                     <option value={'t_6800_parl_fl'}>t_6800_parl_fl</option>
                     <option value={'t_6801_parl_li'}>t_6801_parl_li</option>
+                    <option value={'t_6802_parl_pkt'}>t_6802_parl_pkt</option>
                 </Select>
             </FormControl>
             <FormControl required variant="filled" style={{marginLeft: '10px'}}>
