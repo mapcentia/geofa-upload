@@ -71,6 +71,7 @@ class TemplateDialog extends React.Component {
                         <option value={'t_6800_parl_fl'}>t_6800_parl_fl</option>
                         <option value={'t_6801_parl_li'}>t_6801_parl_li</option>
                         <option value={'t_6802_parl_pkt'}>t_6802_parl_pkt</option>
+                        <option value={'t_6803_parl_omr'}>t_6803_parl_omr</option>
                     </Select>
                 </FormControl>
                 <FormControl required variant="filled" style={{marginLeft: '10px'}}>
