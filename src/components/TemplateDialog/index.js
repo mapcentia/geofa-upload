@@ -47,11 +47,14 @@ class TemplateDialog extends React.Component {
                         }}
                     >
                         <option aria-label="None" value=""/>
+                        <option value={'t_5600_vintervedl'}>t_5600_vintervedl</option>
                         <option value={'t_5607_ladefacilitet'}>t_5607_ladefacilitet</option>
                         <option value={'t_5608_cykelknudepunkter'}>t_5608_cykelknudepunkter</option>
                         <option value={'t_5609_cykelknudepunktsstraekninger'}>t_5609_cykelknudepunktsstraekninger
                         </option>
                         <option value={'t_5610_cykelplanlaegning'}>t_5610_cykelplanlaegning</option>
+                        <option value={'t_5611_vinterute'}>t_5611_vinterute</option>
+                        <option value={'t_5612_vinterserviceomraade'}>t_5612_vinterserviceomraade</option>
                         <option value={'t_5700_grundej'}>t_5700_grundej</option>
                         <option value={'t_5701_lok_omr'}>t_5701_lok_omr</option>
                         <option value={'t_5702_skorst_fej'}>t_5702_skorst_fej</option>
