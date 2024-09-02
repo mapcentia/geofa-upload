@@ -61,6 +61,7 @@ class GetData extends React.Component {
                     <option value={'t_5603_hasti_omraade'}>t_5603_hasti_omraade</option>
                     <option value={'t_5604_koer_begr'}>t_5604_koer_begr</option>
                     <option value={'t_5605_vejbyggel'}>t_5605_vejbyggel</option>
+                    <option value={'t_5606_vejinv'}>t_5606_vejinv</option>
                     <option value={'t_5607_ladefacilitet'}>t_5607_ladefacilitet</option>
                     <option value={'t_5608_cykelknudepunkter'}>t_5608_cykelknudepunkter</option>
                     <option value={'t_5609_cykelknudepunktsstraekninger'}>t_5609_cykelknudepunktsstraekninger</option>
