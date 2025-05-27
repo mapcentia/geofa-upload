@@ -58,6 +58,7 @@ class GetData extends React.Component {
                     <option value={'t_5003_draenledn'}>t_5003_draenledn</option>
                     <option value={'t_5004_draenomr'}>t_5004_draenomr</option>
                     <option value={'t_5011_draenbroend'}>t_5011_draenbroend</option>
+                    <option value={'t_5104_art_invas'}>t_5104_art_invas</option>
                     <option value={'t_5300_genopd_ret'}>t_5300_genopd_ret</option>
                     <option value={'t_5600_vintervedl'}>t_5600_vintervedl</option>
                     <option value={'t_5601_hasti_daemp'}>t_5601_hasti_daemp</option>
