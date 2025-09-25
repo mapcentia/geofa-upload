@@ -68,8 +68,7 @@ class TemplateDialog extends React.Component {
                         <option value={'t_5606_vejinv'}>t_5606_vejinv</option>
                         <option value={'t_5607_ladefacilitet'}>t_5607_ladefacilitet</option>
                         <option value={'t_5608_cykelknudepunkter'}>t_5608_cykelknudepunkter</option>
-                        <option value={'t_5609_cykelknudepunktsstraekninger'}>t_5609_cykelknudepunktsstraekninger
-                        </option>
+                        <option value={'t_5609_cykelknudepunktsstraekninger'}>t_5609_cykelknudepunktsstraekninger</option>
                         <option value={'t_5610_cykelplanlaegning'}>t_5610_cykelplanlaegning</option>
                         <option value={'t_5611_vinterute'}>t_5611_vinterute</option>
                         <option value={'t_5612_vinterserviceomraade'}>t_5612_vinterserviceomraade</option>
@@ -91,6 +90,7 @@ class TemplateDialog extends React.Component {
                         <option value={'t_5800_fac_pkt'}>t_5800_fac_pkt</option>
                         <option value={'t_5801_fac_fl'}>t_5801_fac_fl</option>
                         <option value={'t_5802_fac_li'}>t_5802_fac_li</option>
+                        <option value={'t_5902_jordv_anl'}>t_5902_jordv_anl</option>
                         <option value={'t_6800_parl_fl'}>t_6800_parl_fl</option>
                         <option value={'t_6801_parl_li'}>t_6801_parl_li</option>
                         <option value={'t_6802_parl_pkt'}>t_6802_parl_pkt</option>
