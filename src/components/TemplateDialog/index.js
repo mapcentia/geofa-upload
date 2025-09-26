@@ -94,6 +94,7 @@ class TemplateDialog extends React.Component {
                         <option value={'t_6200_nat_geo'}>t_6200_nat_geo</option>
                         <option value={'t_6201_kult_geo'}>t_6201_kult_geo</option>
                         <option value={'t_6202_landk_omr'}>t_6202_landk_omr</option>
+                        <option value={'t_6203_landk_vur'}>t_6203_landk_vur</option>
                         <option value={'t_6800_parl_fl'}>t_6800_parl_fl</option>
                         <option value={'t_6801_parl_li'}>t_6801_parl_li</option>
                         <option value={'t_6802_parl_pkt'}>t_6802_parl_pkt</option>

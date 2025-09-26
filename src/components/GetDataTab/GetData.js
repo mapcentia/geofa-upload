@@ -102,6 +102,7 @@ class GetData extends React.Component {
                     <option value={'t_6200_nat_geo'}>t_6200_nat_geo</option>
                     <option value={'t_6201_kult_geo'}>t_6201_kult_geo</option>
                     <option value={'t_6202_landk_omr'}>t_6202_landk_omr</option>
+                    <option value={'t_6203_landk_vur'}>t_6203_landk_vur</option>
                     <option value={'t_6801_parl_li'}>t_6801_parl_li</option>
                     <option value={'t_6802_parl_pkt'}>t_6802_parl_pkt</option>
                     <option value={'t_6803_parl_omr'}>t_6803_parl_omr</option>
