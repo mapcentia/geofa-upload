@@ -10,6 +10,8 @@ import {
     CHECK_AUTHORIZATION_FAILURE, PROCESS_RESET
 } from './constants';
 
+import codeFlow from '../../utils/codeFlow'
+
 const cookies = new Cookies();
 
 const normalizeUser = (userData) => {
@@ -107,7 +109,8 @@ export function signInFailure() {
 // Sign out
 export function signOut() {
     cookies.remove('PHPSESSID', {path: `/`});
-    return {type: SIGN_OUT};
+    codeFlow.signOut();
+    return { type: SIGN_OUT };
 }
 
 // Get the list of subusers
