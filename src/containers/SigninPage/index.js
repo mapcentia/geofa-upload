@@ -1,53 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import styled from 'styled-components';
 import {createStructuredSelector} from 'reselect';
-
-import Typography from '@material-ui/core/Typography';
-
 import {makeSelectSigningIn, makeSelectSigningInError} from '../App/selectors';
-import {signInRequest, getDatabasesRequest, getDatabasesReset} from '../App/actions';
-import SigninForm from './SigninForm';
-import PublicFormsWrapper from '../../components/PublicFormsWrapper';
+import {makeDatabaseError, makeSelectGC2Configuration} from '../App/selectors';
+import OpenId from './OpenId';
 
-const ErrorWrapper = styled.div`
-  padding-top: 10px;
-`;
-
-class Login extends React.Component {
+class Signin extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        return (
-            <PublicFormsWrapper>
-                <SigninForm
-                    disabled={this.props.signingIn ? true : false}
-                    onGetDatabases={(userName) => {
-                        this.props.dispatch(getDatabasesRequest(userName))
-                    }}
-                    onReset={() => {
-                        this.props.dispatch(getDatabasesReset())
-                    }}
-                    onSubmit={(data) => {
-                        this.props.dispatch(signInRequest(data));
-                    }}/>
-                {this.props.signingInError ? (
-                    <ErrorWrapper>
-                        <Typography variant="body1" gutterBottom color="error">
-                            Forkert brugernavn<br/>eller adgangskode
-                        </Typography>
-                    </ErrorWrapper>
-                ) : false}
-            </PublicFormsWrapper>
-        );
+        return (<OpenId/>);
     }
 }
 
 const mapStateToProps = createStructuredSelector({
     signingIn: makeSelectSigningIn(),
     signingInError: makeSelectSigningInError(),
+    databaseError: makeDatabaseError(),
+    gc2Configuration: makeSelectGC2Configuration(),
 });
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Signin);

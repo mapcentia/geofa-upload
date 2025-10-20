@@ -49,6 +49,9 @@ const makeSelectUploadResult = () => createSelector(selectGlobal, globalState =>
     }
 );
 
+const makeDatabaseError = () => createSelector(selectGlobal, globalState => globalState.databaseError);
+
+
 
 export {
     selectGlobal,
@@ -85,4 +88,6 @@ export {
     makeSelectUpdateConfigurationError,
 
     makeSelectUploadResult,
+    makeDatabaseError,
+
 };
