@@ -42,7 +42,7 @@ class GetDataTab extends React.Component {
                     </Typography>
                     <Typography variant="body1" color="inherit" style={{paddingTop: `10px`}}>
                         <p>WFS 2.0:<br/>{config.apiUrl}ows/fkg/fkg</p>
-                        <p>WFS-t 1.1:<br/>{config.apiUrl}wfs/{this.props.user.screenName}/fkg/25832</p>
+                        <p>WFS-t 1.1:<br/>{config.apiUrl}wfs/fkg/fkg/25832</p>
                         <p>Brugernavn til WFS-T er:<br/>{this.props.user.screenName}</p>
                     </Typography>
                     <Typography variant="h6" color="inherit">
