@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {jwtDecode} from 'jwt-decode'
 import codeFlow from '../../utils/codeFlow'
+import Button from '@material-ui/core/Button';
 
 class OpenId extends Component {
     constructor(props) {
@@ -217,7 +218,7 @@ class OpenId extends Component {
                 return
             }
             codeFlow.clear()
-            window.location.href = '/dashboard/'
+            window.location.href = '/editor/'
         })
     }
 
@@ -276,17 +277,8 @@ class OpenId extends Component {
             background: '#ffffff',
             boxShadow: '0 4px 14px rgba(0,0,0,0.06)'
         }
-        const titleStyle = {fontSize: 22, marginBottom: 12}
         const descStyle = {color: '#4b5563', marginBottom: 20, lineHeight: 1.5}
-        const badgeStyle = {
-            display: 'inline-block',
-            padding: '4px 10px',
-            background: '#f3f4f6',
-            borderRadius: 999,
-            fontSize: 12,
-            color: '#374151',
-            marginBottom: 16
-        }
+
         const btnRowStyle = {display: 'flex', gap: 12}
         const primaryBtn = {
             padding: '10px 14px',
@@ -315,21 +307,11 @@ class OpenId extends Component {
 
         return (
             <div style={containerStyle}>
-                <div style={titleStyle}>Sign in</div>
+                <img src={"GeoDanmark-logo-pos.png"} style={{maxWidth: `150px`, height: `auto`, marginBottom: `26px`}}/>
                 {processing ? (
                     <div style={descStyle}>Processing login, please wait...</div>
                 ) : (
                     <>
-                        <div style={descStyle}>
-                            Start the login process
-                        </div>
-                        {savedDb ? (
-                            <div style={badgeStyle}>
-                                {{db: savedDb, superuser: superuserLogin === '1' ? '(super)' : ''}}
-                            </div>
-                        ) : (
-                            <div style={badgeStyle}>No database selected yet</div>
-                        )}
                         {this.state.selecting ? (
                             <div>
                                 <div style={{fontSize: 16, margin: '16px 0'}}>Select a database</div>
@@ -419,13 +401,14 @@ class OpenId extends Component {
                                 </div>
                             </div>
                         ) : (
-                            <div style={btnRowStyle}>
-                                <button style={primaryBtn} onClick={this.handleLogin}>
+                            <div >
+                                <Button
+                                    fullWidth
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={this.handleLogin}>
                                     Login
-                                </button>
-                                <button style={secondaryBtn} onClick={this.handleResetDb}>
-                                    Reset selected database
-                                </button>
+                                </Button>
                             </div>
                         )}
                     </>
