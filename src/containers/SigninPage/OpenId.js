@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {jwtDecode} from 'jwt-decode'
+import {FormattedMessage} from 'react-intl'
 import codeFlow from '../../utils/codeFlow'
 import Button from '@material-ui/core/Button';
 
