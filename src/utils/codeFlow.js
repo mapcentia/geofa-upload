@@ -3,9 +3,9 @@ import {getGC2ConfigurationCall} from "../api";
 
 // Fallback defaults to preserve existing behavior if remote config is missing
 const DEFAULTS = {
-    redirectUri: 'http://localhost:8080',
+    redirectUri: window.location.protocol + '//' + window.location.host,
     clientId: 'gc2-cli',
-    host: 'http://localhost:8080',
+    host: window.location.protocol + '//' + window.location.host ,
     scope: 'openid'
 };
 
@@ -37,11 +37,32 @@ function ensureInstance() {
 }
 
 // Export a thin async façade to keep existing imports working
+let redirectHandlePromise = null;
 const codeFlow = {
-    signIn: () => ensureInstance().then(cf => cf.signIn()),
-    redirectHandle: () => ensureInstance().then(cf => cf.redirectHandle()),
-    signOut: () => ensureInstance().then(cf => cf.signOut()),
-    clear: () => ensureInstance().then(cf => cf.clear()),
+    signIn: () => {
+        redirectHandlePromise = null;
+        return ensureInstance().then(cf => cf.signIn());
+    },
+    redirectHandle: () => {
+        if (!redirectHandlePromise) {
+            redirectHandlePromise = ensureInstance().then(cf => cf.redirectHandle());
+            // Reset the promise if it fails or returns false, so subsequent attempts can try again
+            redirectHandlePromise.then(res => {
+                if (!res) redirectHandlePromise = null;
+            }).catch(() => {
+                redirectHandlePromise = null;
+            });
+        }
+        return redirectHandlePromise;
+    },
+    signOut: () => {
+        redirectHandlePromise = null;
+        return ensureInstance().then(cf => cf.signOut());
+    },
+    clear: () => {
+        redirectHandlePromise = null;
+        return ensureInstance().then(cf => cf.clear());
+    },
 };
 
 export default codeFlow;
