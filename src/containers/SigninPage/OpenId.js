@@ -315,27 +315,24 @@ class OpenId extends Component {
 
         return (
             <div style={containerStyle}>
-                <div style={titleStyle}><FormattedMessage id="Sign in" /></div>
+                <div style={titleStyle}>Sign in</div>
                 {processing ? (
-                    <div style={descStyle}><FormattedMessage id="Processing login, please wait..." /></div>
+                    <div style={descStyle}>Processing login, please wait...</div>
                 ) : (
                     <>
                         <div style={descStyle}>
-                            <FormattedMessage id="Start the login process" />
+                            Start the login process
                         </div>
                         {savedDb ? (
                             <div style={badgeStyle}>
-                                <FormattedMessage
-                                    id="Current selection"
-                                    values={{db: savedDb, superuser: superuserLogin === '1' ? '(super)' : ''}}
-                                />
+                                {{db: savedDb, superuser: superuserLogin === '1' ? '(super)' : ''}}
                             </div>
                         ) : (
-                            <div style={badgeStyle}><FormattedMessage id="No database selected yet" /></div>
+                            <div style={badgeStyle}>No database selected yet</div>
                         )}
                         {this.state.selecting ? (
                             <div>
-                                <div style={{fontSize: 16, margin: '16px 0'}}><FormattedMessage id="Select a database" /></div>
+                                <div style={{fontSize: 16, margin: '16px 0'}}>Select a database</div>
                                 <div style={{marginBottom: 12}}>
                                     <input
                                         type="text"
@@ -401,39 +398,39 @@ class OpenId extends Component {
                                                             onChange={(e) => this.handleDatabaseSuperuserToggle(d, e.target.checked)}
                                                             onClick={(e) => e.stopPropagation()}
                                                         />
-                                                        <span><FormattedMessage id="Superuser" /></span>
+                                                        <span>Superuser</span>
                                                     </label>
                                                 )}
                                             </div>
                                         ))}
                                     {this.state.allowedDatabases.filter(d => d.toLowerCase().includes(this.state.searchTerm.toLowerCase())).length === 0 && (
                                         <div style={{padding: '10px 12px', color: '#6b7280', fontSize: 14}}>
-                                            <FormattedMessage id="No databases found" />
+                                            No databases found
                                         </div>
                                     )}
                                 </div>
                                 <div style={btnRowStyle}>
                                     <button style={primaryBtn} onClick={this.handleConfirmSelection}>
-                                        <FormattedMessage id="Continue" />
+                                        Continue
                                     </button>
                                     <button style={secondaryBtn} onClick={this.handleCancelSelection}>
-                                        <FormattedMessage id="Cancel" />
+                                        Cancel
                                     </button>
                                 </div>
                             </div>
                         ) : (
                             <div style={btnRowStyle}>
                                 <button style={primaryBtn} onClick={this.handleLogin}>
-                                    <FormattedMessage id="Login" />
+                                    Login
                                 </button>
                                 <button style={secondaryBtn} onClick={this.handleResetDb}>
-                                    <FormattedMessage id="Reset selected database" />
+                                    Reset selected database
                                 </button>
                             </div>
                         )}
                     </>
                 )}
-                {info === 'reset' && <div style={infoStyle}><FormattedMessage id="Database reset message" /></div>}
+                {info === 'reset' && <div style={infoStyle}>Database reset message</div>}
             </div>
         )
     }
