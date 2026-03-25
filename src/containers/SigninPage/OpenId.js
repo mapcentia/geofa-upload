@@ -219,7 +219,7 @@ class OpenId extends Component {
                 return
             }
             codeFlow.clear()
-            window.location.href = '/editor/#/'
+            window.location.href = '/editor/'
         })
     }
 
