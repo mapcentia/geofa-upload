@@ -67,8 +67,8 @@ class TemplateDialog extends React.Component {
                         <option value={'t_5605_vejbyggel'}>t_5605_vejbyggel</option>
                         <option value={'t_5606_vejinv'}>t_5606_vejinv</option>
                         <option value={'t_5607_ladefacilitet'}>t_5607_ladefacilitet</option>
-                        <option value={'t_5608_cykelknudepunkter'}>t_5608_cykelknudepunkter</option>
-                        <option value={'t_5609_cykelknudepunktsstraekninger'}>t_5609_cykelknudepunktsstraekninger</option>
+                        <option value={'t_5608_cykelkrydspunkter'}>t_5608_cykelkrydspunkter</option>
+                        <option value={'t_5609_cykelkrydspunktsstraekninger'}>t_5609_cykelkrydspunktsstraekninger</option>
                         <option value={'t_5610_cykelplanlaegning'}>t_5610_cykelplanlaegning</option>
                         <option value={'t_5611_vinterute'}>t_5611_vinterute</option>
                         <option value={'t_5612_vinterserviceomraade'}>t_5612_vinterserviceomraade</option>
