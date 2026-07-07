@@ -55,6 +55,32 @@ class GetData extends React.Component {
                     }}
                 >
                     <option aria-label="None" value=""/>
+                    <option value={'t_5012_afloebsledning'}>t_5012_afloebsledning</option>
+                    <option value={'t_5013_afvandingskanal'}>t_5013_afvandingskanal</option>
+                    <option value={'t_5014_bassin'}>t_5014_bassin</option>
+                    <option value={'t_5015_begraenser'}>t_5015_begraenser</option>
+                    <option value={'t_5016_broend'}>t_5016_broend</option>
+                    <option value={'t_5017_broendbygvaerk'}>t_5017_broendbygvaerk</option>
+                    <option value={'t_5018_fordelerbygvaerk'}>t_5018_fordelerbygvaerk</option>
+                    <option value={'t_5019_etagebroend'}>t_5019_etagebroend</option>
+                    <option value={'t_5020_groent_tag'}>t_5020_groent_tag</option>
+                    <option value={'t_5021_byrum_og_landskabselementer_l'}>t_5021_byrum_og_landskabselementer_l</option>
+                    <option value={'t_5022_byrum_og_landskabselementer_f'}>t_5022_byrum_og_landskabselementer_f</option>
+                    <option value={'t_5023_nedsivningsanlaeg'}>t_5023_nedsivningsanlaeg</option>
+                    <option value={'t_5024_permeabel_belaegning'}>t_5024_permeabel_belaegning</option>
+                    <option value={'t_5025_pumpestation'}>t_5025_pumpestation</option>
+                    <option value={'t_5026_regnbed'}>t_5026_regnbed</option>
+                    <option value={'t_5027_reguleringsbygvaerk'}>t_5027_reguleringsbygvaerk</option>
+                    <option value={'t_5028_rist'}>t_5028_rist</option>
+                    <option value={'t_5029_samlekonstruktion'}>t_5029_samlekonstruktion</option>
+                    <option value={'t_5030_sandfang'}>t_5030_sandfang</option>
+                    <option value={'t_5031_spunsvaeg'}>t_5031_spunsvaeg</option>
+                    <option value={'t_5032_tank'}>t_5032_tank</option>
+                    <option value={'t_5033_udskiller'}>t_5033_udskiller</option>
+                    <option value={'t_5034_udskillerbygvaerk'}>t_5034_udskillerbygvaerk</option>
+                    <option value={'t_5035_projekt'}>t_5035_projekt</option>
+                    <option value={'t_5036_vandopland'}>t_5036_vandopland</option>
+
                     <option value={'t_5003_draenledn'}>t_5003_draenledn</option>
                     <option value={'t_5004_draenomr'}>t_5004_draenomr</option>
                     <option value={'t_5011_draenbroend'}>t_5011_draenbroend</option>
