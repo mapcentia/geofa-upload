@@ -68,5 +68,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "/editor"
+  "homepage": "/editor",
+  "devDependencies": {
+    "ajv": "^8.20.0"
+  }
 }
