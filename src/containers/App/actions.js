@@ -7,7 +7,7 @@ import {
     GET_SCHEMAS_REQUEST, GET_SCHEMAS_SUCCESS, GET_SCHEMAS_FAILURE,
     GET_GC2_CONFIGURATION_REQUEST, GET_GC2_CONFIGURATION_SUCCESS,
     PROCESS_REQUEST, PROCESS_FAILURE, PROCESS_SUCCESS, CHECK_AUTHORIZATION_REQUEST, CHECK_AUTHORIZATION_SUCCESS,
-    CHECK_AUTHORIZATION_FAILURE, PROCESS_RESET
+    CHECK_AUTHORIZATION_FAILURE, PROCESS_RESET, UPLOAD_FAILURE
 } from './constants';
 
 import codeFlow from '../../utils/codeFlow'
@@ -150,6 +150,11 @@ export function processSuccess(payload) {
 
 export function processFailure(payload) {
     return {type: PROCESS_FAILURE, payload: payload};
+}
+
+// Upload of a file failed, so it never reached processing
+export function uploadFailure(payload) {
+    return {type: UPLOAD_FAILURE, payload: payload};
 }
 
 export function processReset(payload) {

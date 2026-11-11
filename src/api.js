@@ -22,10 +22,9 @@ const getGC2ConfigurationCall = () => {
 };
 
 const processCall = (action) => {
-    return axios.post(`${config.apiUrl}extensions/fkgupload/api/process`, action.payload, {withCredentials: true,
-        validateStatus: (status) => {
-            return (status === 200 || status === 403);
-        }
+    return axios.post(`${config.apiUrl}extensions/fkgupload/api/process`, action.payload, {
+        withCredentials: true,
+        validateStatus: (status) => status === 200
     });
 };
 

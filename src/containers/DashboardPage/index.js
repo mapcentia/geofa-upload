@@ -21,7 +21,7 @@ import ConnectImageTab from "../../components/ConnectImageTab";
 import GetDataTab from "../../components/GetDataTab";
 
 import {makeSelectProcessing, makeSelectProcessingError} from '../App/selectors';
-import {processRequest, processReset} from "../App/actions";
+import {processRequest, processReset, uploadFailure} from "../App/actions";
 
 export class DashboardPage extends React.Component {
 
@@ -66,6 +66,7 @@ export class DashboardPage extends React.Component {
                 <div style={{paddingTop: `16px`, paddingLeft: `4px`, paddingRight: `4px`}}>
                     <UploadFileTab
                         onProcess={(data) => { this.props.dispatch(processRequest(data)); }}
+                        onUploadError={(data) => { this.props.dispatch(uploadFailure(data)); }}
                         onReset={() => { this.props.dispatch(processReset()); }}
                     />
                 </div>

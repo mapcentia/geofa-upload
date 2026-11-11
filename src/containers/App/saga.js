@@ -133,16 +133,19 @@ export function* getGC2ConfigurationGenerator() {
     }
 }
 
-export function* processGenerator(credentials) {
+export function* processGenerator(action) {
     try {
-        const response = yield call(processCall, credentials);
-        if (response.status === 200)
-            yield put(processSuccess(response));
-        else
-            yield put(processFailure(response));
-
+        const response = yield call(processCall, action);
+        yield put(processSuccess(response));
     } catch (err) {
-        yield put(processFailure(err));
+        // Any status other than 200 ends here, as do network errors (no response at all)
+        const response = err.response;
+        const data = response && response.data && typeof response.data === 'object' ? response.data : {};
+        yield put(processFailure({
+            fileName: data.file_name || (action.payload && action.payload.fileName),
+            status: response ? response.status : null,
+            message: data.message || (response && response.statusText) || err.message,
+        }));
     }
 }
 

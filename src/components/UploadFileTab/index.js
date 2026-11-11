@@ -51,8 +51,21 @@ uppy.use(XHRUpload, {
     endpoint: `${config.apiUrl}controllers/upload/vector`,
     formData: true,
     fieldName: 'file',
-    withCredentials: true
+    withCredentials: true,
+    // Use the message from the backend when it returns an error code
+    getResponseError: (responseText, xhr) => {
+        let message;
+        try {
+            message = JSON.parse(responseText).message;
+        } catch (e) {
+            // Not JSON, e.g. an HTML error page
+        }
+        return new Error(message || xhr.statusText || 'Upload fejlede');
+    }
 })
+
+// "kommune.shp" and "kommune.dbf" belong to the same data set
+const baseName = (name) => name.replace(/\.[^.]*$/, '').toLowerCase();
 
 uppy.on('files-added', (files) => {
     files.forEach((file) => {
@@ -71,15 +84,34 @@ class UploadFileTab extends React.Component {
         this.state = {delete: false, open: false}
     }
 
-    componentWillMount() {
-        uppy.on('complete', (result) => {
-            fileArr.forEach(fileName => {
-                this.props.onProcess({fileName: fileName, delete: this.state.delete});
-            })
-            fileArr = [];
-        })
-
+    componentDidMount() {
+        uppy.on('upload-error', this.handleUploadError);
+        uppy.on('complete', this.handleComplete);
     }
+
+    componentWillUnmount() {
+        uppy.off('upload-error', this.handleUploadError);
+        uppy.off('complete', this.handleComplete);
+    }
+
+    handleUploadError = (file, error, response) => {
+        this.props.onUploadError({
+            fileName: file.name,
+            status: response && response.status,
+            message: error && error.message
+        });
+    };
+
+    handleComplete = (result) => {
+        // Don't process a data set if any of its files failed to upload
+        const failed = (result.failed || []).map(file => baseName(file.name));
+        fileArr.forEach(fileName => {
+            if (!failed.includes(baseName(fileName))) {
+                this.props.onProcess({fileName: fileName, delete: this.state.delete});
+            }
+        })
+        fileArr = [];
+    };
 
     handleChangeDelete = (event) => {
         this.setState({delete: event.target.checked});

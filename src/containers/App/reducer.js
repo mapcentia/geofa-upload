@@ -8,7 +8,8 @@ import {
     GET_SUBUSERS_REQUEST, GET_SUBUSERS_SUCCESS, GET_SUBUSERS_FAILURE,
     GET_SCHEMAS_REQUEST, GET_SCHEMAS_SUCCESS, GET_SCHEMAS_FAILURE,
     GET_GC2_CONFIGURATION_REQUEST, GET_GC2_CONFIGURATION_SUCCESS,
-    CREATE_UPDATE_USER_RESET, PROCESS_REQUEST, PROCESS_SUCCESS, PROCESS_FAILURE, PROCESS_RESET
+    CREATE_UPDATE_USER_RESET, PROCESS_REQUEST, PROCESS_SUCCESS, PROCESS_FAILURE, PROCESS_RESET,
+    UPLOAD_FAILURE
 } from './constants';
 
 const initialState = fromJS({
@@ -56,6 +57,11 @@ const initialState = fromJS({
     schemas: [],
     configurations: [],
 });
+
+const formatFailure = (time, text, payload = {}) => {
+    const status = payload.status ? ` (HTTP ${payload.status})` : ``;
+    return `${time}:   ${text} ${payload.fileName}${status}\n            ${payload.message || 'Ukendt fejl'}\n`;
+};
 
 function appReducer(state = initialState, action) {
     let time = new Date().toLocaleTimeString("da-DK");
@@ -210,7 +216,7 @@ function appReducer(state = initialState, action) {
                 isRequesting: true,
                 processing: true,
                 processingSuccess: false,
-                processError: false,
+                processingError: false,
                 uploadResult: `${time}:   Indlæser ${action.payload?.fileName}`
             });
         case PROCESS_SUCCESS:
@@ -227,7 +233,12 @@ function appReducer(state = initialState, action) {
                 processing: false,
                 processingSuccess: false,
                 processingError: true,
-                uploadResult: `${time}:   Fejl ved indlæsning af ${action.payload.data.file_name}\n            ${action.payload.data.message}\n`
+                uploadResult: formatFailure(time, 'Fejl ved indlæsning af', action.payload)
+            });
+        case UPLOAD_FAILURE:
+            return Object.assign({}, state, {
+                processingError: true,
+                uploadResult: formatFailure(time, 'Fejl ved upload af', action.payload)
             });
         case PROCESS_RESET:
             return Object.assign({}, state, {
